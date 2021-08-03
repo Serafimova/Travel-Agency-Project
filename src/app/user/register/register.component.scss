@@ -80,7 +80,9 @@ form.register {
 .login .field,
 .register .field {
   display: flex;
-  padding-bottom: 0;
+  padding-bottom: 20px;
+  flex-direction: column;
+  
 }
 
 /* errors  */
@@ -94,4 +96,8 @@ p.error {
 
 .input-error {
   border-left-color: red;
+}
+
+label {
+    display: block;
 }

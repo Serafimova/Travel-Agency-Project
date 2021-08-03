@@ -20,11 +20,11 @@ form.register {
   border-bottom: none;
 }
 
-.login p,
-.register p {
-  padding-bottom: 0;
-  padding-top: 1.5rem;
-}
+// .login p,
+// .register p {
+//   padding-bottom: 0;
+//   padding-top: 1.5rem;
+// }
 
 .login input,
 .register input {
@@ -80,7 +80,9 @@ form.register {
 .login .field,
 .register .field {
   display: flex;
-  padding-bottom: 0;
+  padding-bottom: 20px;
+  flex-direction: column;
+  
 }
 
 /* errors  */
