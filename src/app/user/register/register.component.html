@@ -1,1 +1,73 @@
-<p>register works!</p>
+<div class="container">
+    <form  class="register" action="" method="post">
+
+        <fieldset>
+            <h2>Registration Form</h2>
+
+            <!-- username -->
+            <p class="field field-icon">
+                <label for="username">Username</label>
+                <input class="input-error" type="text" name="username" id="username" placeholder="Enter toy username here" >
+            </p>
+            <!-- <ng-container *ngIf="form.get('username')?.touched">
+                <p *ngIf="form.get('username')?.errors?.required" class="error">
+                    Username is required!
+                </p>
+                <p *ngIf="form.get('username')?.errors?.minlength" class="error">
+                    Username is must be at least 4 characters!
+                </p>
+            </ng-container> -->
+
+            <!-- email -->
+            <p class="field field-icon">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter you email here">
+            </p>
+            <!-- <ng-container *ngIf="form.get('email')?.touched">
+            <p *ngIf="form.get('email')?.errors?.required" class="error">
+                Email is required!
+            </p>
+            <p *ngIf="form.get('email')?.errors?.invalidEmail" class="error">
+                Email is not valid!
+            </p>
+            </ng-container> -->
+
+            <!-- password -->
+            <p class="field field-icon">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="******">
+            </p>
+            <!-- <ng-container *ngIf="form.get('password')?.touched">
+            <p *ngIf="form.get('password')?.errors?.required" class="error">
+                Password is required!
+            </p>
+            <p *ngIf="form.get('password')?.errors?.minlength" class="error">
+                Password must be at least 4 characters!
+            </p>
+            </ng-container> -->
+
+            <!-- rePassword -->
+            <p class="field field-icon">
+                <label for="rePassword">Repeat Password</label>
+                <input type="password" name="rePassword" id="rePassword" placeholder="******" >
+            </p>
+            <!-- <ng-container *ngIf="form.get('rePassword')?.touched">
+                <p *ngIf="form.get('rePassword')?.errors?.required" class="error">
+                    Password is required!
+                </p>
+                <p *ngIf="form.get('rePassword')?.errors?.sameValue" class="error">
+                    Repeat Password does not match password!
+                </p>
+                </ng-container> -->
+
+
+            <button>Create Account</button>
+
+            <p class="text-center">
+                Already have an account?
+                <a routerLink='/user/login'>Log In Here</a>
+            </p>
+
+        </fieldset>
+    </form>
+</div>

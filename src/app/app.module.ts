@@ -9,6 +9,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FaqComponent } from './faq/faq.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    UserModule
+    UserModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
