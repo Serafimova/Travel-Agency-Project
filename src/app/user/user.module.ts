@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppModule } from '../app.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 
 
@@ -15,7 +16,8 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReservationsComponent
   ],
   imports: [
     CommonModule,

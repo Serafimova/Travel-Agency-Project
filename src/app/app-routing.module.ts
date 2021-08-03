@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './user/login/login.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
+import { ReservationsComponent } from './user/reservations/reservations.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'reservations',
+        component: ReservationsComponent
       },
     ]
   },

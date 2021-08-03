@@ -36,9 +36,19 @@ header a {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.mini-navbar ul li:hover {
+    text-decoration: underline;
+    font-style: italic;
+  }
+
 nav {
     border-top: 1px solid rgb(96, 31, 218);
 }
+
+nav ul li:hover {
+    text-decoration: underline;
+    font-style: italic;
+  }
 
 .logo {
     font-size: 1.3em;
