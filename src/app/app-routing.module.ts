@@ -5,6 +5,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TermsComponent } from './terms/terms.component';
 import { LoginComponent } from './user/login/login.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'faq',
     component: FaqComponent
+  },
+  {
+    path: 'terms',
+    component: TermsComponent
   },
   {
     path: 'user',

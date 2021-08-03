@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AboutComponent,
     ContactsComponent,
     NotFoundComponent,
-    FaqComponent
+    FaqComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

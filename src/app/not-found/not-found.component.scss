@@ -8,11 +8,12 @@
 .msg {
   text-align: center;
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.6rem;
+  font-size: 32px;
   position: absolute;
   left: 16%;
   top: 45%;
   width: 75%;
+  color: rgb(96, 31, 218);
 }
 
 button {
@@ -20,10 +21,23 @@ button {
   color: #000000;
   background-color: rgb(247, 245, 148);
   cursor: pointer;
+  color: rgb(96, 31, 218);
+  font-weight: bold;
+  border-radius: 10px;
+  height: 36px;
 }
 
 button:hover {
   text-decoration: underline;
   background-color: rgb(233, 184, 77);
   font-style: italic;
+  font-weight: bolder;
+}
+
+.contact {
+  margin-left: 50px;
+}
+
+.home {
+  margin-right: 50px;
 }
