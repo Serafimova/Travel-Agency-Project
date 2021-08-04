@@ -1,47 +1,38 @@
-/*login register forms  */
-
-form.login,
 form.register {
   width: 50%;
   margin: 2em auto 0;
   text-align: center;
 }
 
-.login fieldset,
 .register fieldset {
   border-radius: 0.3em;
   padding: 0.8em;
   background-color: #ffffff;
+  color: rgb(96, 31, 218);
 }
 
-.login h2,
 .register h2 {
   padding-top: 0;
   border-bottom: none;
 }
 
-.login p,
 .register p {
   padding-bottom: 0;
   padding-top: 1.5rem;
 }
 
-.login input,
 .register input {
   flex: 0 1 100%;
   border: 1px solid;
   padding: 0.3em;
-  border-left: 0.3em solid green;
   border-top-right-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
 }
 
-.login select,
 .register select {
   border-color: black;
 }
 
-.login button,
 .register button {
   border: solid;
   border-radius: 0.3em;
@@ -49,26 +40,24 @@ form.register {
   margin-top: 1.5rem;
   width: 60%;
   outline: none;
-  color: black;
-  background-color: rgb(218, 208, 194);
+  color: rgb(96, 31, 218);
+  background-color:  rgb(247, 245, 148);
+  cursor: pointer;
 }
 
-.login,
 .register {
   border: 1px solid;
   border-right: none;
   padding: 0.55em;
   border-top-left-radius: 0.3em;
   border-bottom-left-radius: 0.3em;
-  background-color: #e9ecef;
+  background: rgb(247, 245, 148);
 }
 
-.login a,
 .register a {
   color: #007bff;
 }
 
-.login a:hover,
 .register a:hover {
   cursor: pointer;
 }
@@ -77,15 +66,12 @@ form.register {
   padding-right: 0.8em;
 }
 
-.login .field,
 .register .field {
   display: flex;
   padding-bottom: 20px;
   flex-direction: column;
   
 }
-
-/* errors  */
 
 p.error {
   text-align: left;

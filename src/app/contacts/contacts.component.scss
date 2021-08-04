@@ -1,4 +1,10 @@
-.wiki_td {
+.container {
+  text-align: center;
+  color: rgb(96, 31, 218);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.div {
   border-style: solid;
   border: none;
   border-width: 0px 0px 1px 1px;
@@ -6,35 +12,32 @@
   padding: 10px;
   font-size: 15px;
   color: rgb(96, 31, 218);
-}
-
-.title_int {
-  text-align: center;
-  color: rgb(96, 31, 218);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 iframe {
-  width: 600px;
+  width: 700px;
   height: 400px;
-border: none;
-float: none;
+  border: none;
+  float: none;
 }
 
 .contact {
-    float: left;
-    width: 500px;
-    height: 300px;
-    padding-top: 150px;
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
+  padding-left: 300px;
+  float: left;
+  width: 500px;
+  height: 300px;
+  padding-top: 150px;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .map {
-    float: right;
+  float: right;
+  padding-right: 250px;
 }
 
 p {
-    font-family: Arial, Helvetica, sans-serif;
-font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
