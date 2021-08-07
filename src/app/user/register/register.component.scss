@@ -45,6 +45,12 @@ form.register {
   cursor: pointer;
 }
 
+.register button:hover{
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: bolder;
+}
+
 .register {
   border: 1px solid;
   border-right: none;
@@ -86,4 +92,5 @@ p.error {
 
 label {
     display: block;
+    text-justify: bold;
 }

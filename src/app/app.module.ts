@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TermsComponent } from './terms/terms.component';
+import { OffersModule } from './offers/offers.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TermsComponent } from './terms/terms.component';
     AppRoutingModule,
     CoreModule,
     UserModule,
+    OffersModule,
     FontAwesomeModule
   ],
   providers: [],

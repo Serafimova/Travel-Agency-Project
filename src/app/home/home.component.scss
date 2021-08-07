@@ -1,0 +1,55 @@
+.container {
+  text-align: justify;
+  color: rgb(96, 31, 218);
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 18px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+img {
+  width: 500px;
+  height: 250px;
+  padding-right: 20px;
+}
+
+.images {
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+input {
+  width: 20%;
+}
+
+input+input, input+button {
+  margin-left: 1rem;
+}
+
+
+
+button {
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.6em 1.2em;
+  outline: solid;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: rgb(96, 31, 218);
+  background-color: rgb(247, 245, 148);
+  cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: bolder;
+}

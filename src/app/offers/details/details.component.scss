@@ -1,0 +1,81 @@
+.offer {
+    width: 100%;
+    max-width: 500px;
+    margin: 2em auto 1rem;
+    padding: .5em;
+    border: .3em solid rgb(234, 236, 106);
+    border-radius: .5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(96, 31, 218);
+    background-color: hsla(0, 0%, 94.1%, .8);
+    box-shadow: 0 0 1em 0 #000;
+    text-align: center;
+}
+
+h3 {
+    text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    width: 7em;
+    height: 7em;
+    margin: auto;
+    display: block;
+}
+
+.flex {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.flex p:first-child {
+    width: 35%;
+    text-align: right;
+    margin: .5em;
+}
+
+.flex p:last-child {
+    width: 55%;
+    text-align: left;
+    margin: .5em;
+    font-weight: bold;
+}
+
+button {
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.6em 1.2em;
+    outline: solid;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: rgb(96, 31, 218);
+    background-color: rgb(234, 236, 106);
+}
+
+button:hover{
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.flex > input, .flex > div, .flex > textarea {
+    width: 55%;
+    text-align: left;
+    margin: .5em;
+}
+
+.red-button {
+    color: rgb(3, 3, 3);
+    background-color: red;
+}
+
+.green-button {
+    color: rgb(3, 3, 3);
+    background-color: green;
+}
+
+button+button {
+    margin-left: 1rem;
+}
