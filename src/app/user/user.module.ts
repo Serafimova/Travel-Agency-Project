@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AppModule } from '../app.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { ReservationsComponent } from './reservations/reservations.component';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ]
 })
 export class UserModule { }

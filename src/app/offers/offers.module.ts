@@ -4,6 +4,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { CreateComponent } from './create/create.component';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
 })
 export class OffersModule { }

@@ -1,18 +1,33 @@
 <div class="container">
-    <form  class="login" action="" method="post">
+    <form #form="ngForm" class="login" action="" method="post">
        <fieldset>
           <h2>Login Form</h2>
           <div class="field field-icon">
              <label for="email">Email</label>
-             <input class="input-error" type="email" name="email" id="email" 
-                placeholder="Enter your email here"> 
+             <input #emailInput="ngModel" ngModel type="email" name="email" id="email" 
+                placeholder="Enter your email here" required email> 
           </div>
-          <!-- Errors -->
+          <ng-container *ngIf="emailInput.touched">
+            <div *ngIf="emailInput.errors?.required" class="error">
+              Email is required!
+            </div>
+            <div *ngIf="emailInput.errors?.email" class="error">
+              Please enter a valid email!
+            </div>
+          </ng-container>
           <div class="field field-icon">
              <label for="password"><span>Password</span></label>
-             <input  type="password" name="password" id="password" 
-                placeholder="******" >
+             <input #passwordInput="ngModel" ngModel type="password" name="password" id="password" 
+                placeholder="******" required minlength="4">
           </div>
+          <ng-container *ngIf="passwordInput.touched">
+            <div *ngIf="passwordInput.errors?.required" class="error">
+              Password is required!
+            </div>
+            <div *ngIf="passwordInput.errors?.minlength" class="error">
+              Password must be at least 4 characters long!
+            </div>
+          </ng-container>
           <button>Login</button>
           <p class="text-center">
              Have an account? <br>

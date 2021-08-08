@@ -1,40 +1,69 @@
 <div class="container">
-    <form  class="register" action="" method="post">
-       <fieldset>
-          <h2>Registration Form</h2>
-
-          <div class="field field-icon">
-             <label for="username">Username</label>
-             <input class="input-error" type="text" name="username" id="username" placeholder="Enter your username here" >
-          </div>
-          <!-- Errors -->
-
-          <div class="field field-icon">
-             <label for="email">Email</label>
-             <input type="email" name="email" id="email" placeholder="Enter your email here">
-          </div>
-
-          <div class="field field-icon">
-             <label for="password">Password</label>
-             <input type="password" name="password" id="password" placeholder="******">
-          </div>
-
-          <div class="field field-icon">
-             <label for="rePassword">Repeat Password</label>
-             <input type="password" name="rePassword" id="rePassword" placeholder="******" >
-          </div>
-            <div>
-                <label for="role">Register as:</label>
-                <select id="role" name="role">
-                   <option value="1">Agent</option>
-                   <option value="2">Client</option>
-               </select>
-            </div>
-          <button>Create Account</button>
-          <p class="text-center">
-             Already have an account? <br>
-             <a routerLink='/user/login'>Log In</a>
-          </p>
-       </fieldset>
-    </form>
- </div> 
+  <form #form="ngForm" class="register" action="" method="post">
+    <fieldset>
+      <h2>Registration Form</h2>
+      <div class="field field-icon">
+        <label for="username">Username</label>
+        <input #usernameInput="ngModel" ngModel type="text" name="username" id="username"
+          placeholder="Enter your username here" required minlength="4">
+      </div>
+      <ng-container *ngIf="usernameInput.touched">
+        <div *ngIf="usernameInput.errors?.required" class="error">
+          Username is required!
+        </div>
+        <div *ngIf="usernameInput.errors?.minlength" class="error">
+          Username must be at least 4 characters long!
+        </div>
+      </ng-container>
+      <div class="field field-icon">
+        <label for="email">Email</label>
+        <input #emailInput="ngModel" ngModel type="email" name="email" id="email" placeholder="Enter your email here"
+          required email>
+      </div>
+      <ng-container *ngIf="emailInput.touched">
+        <div *ngIf="emailInput.errors?.required" class="error">
+          Email is required!
+        </div>
+        <div *ngIf="emailInput.errors?.email" class="error">
+          Please enter a valid email!
+        </div>
+      </ng-container>
+      <div class="field field-icon">
+        <label for="password">Password</label>
+        <input #passwordInput="ngModel" ngModel type="password" name="password" id="password" placeholder="******"
+          required minlength="4">
+      </div>
+      <ng-container *ngIf="passwordInput.touched">
+        <div *ngIf="passwordInput.errors?.required" class="error">
+          Password is required!
+        </div>
+        <div *ngIf="passwordInput.errors?.minlength" class="error">
+          Password must be at least 4 characters long!
+        </div>
+      </ng-container>
+      <div class="field field-icon">
+        <label for="rePassword">Repeat Password</label>
+        <input #repeatPasswordIput="ngModel" ngModel type="password" name="rePassword" id="rePassword" placeholder="******" required>
+        <!-- check if both password match -->
+      </div>
+      <ng-container *ngIf="repeatPasswordIput.touched">
+        <div *ngIf="repeatPasswordIput.errors?.required" class="error">
+          Repeat password is required!
+        </div>
+      </ng-container>
+      <div>
+        <label for="role">Register as:</label>
+        <select id="role" name="role" required>
+          <option value="1">Client</option>
+          <option value="2">Agent</option>
+        </select>
+      </div>
+      <br>
+      <button>Create Account</button>
+      <p class="text-center">
+        Already have an account? <br>
+        <a routerLink='/user/login'>Log In</a>
+      </p>
+    </fieldset>
+  </form>
+</div>

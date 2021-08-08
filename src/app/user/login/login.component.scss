@@ -33,7 +33,7 @@ form.login{
   border-radius: 0.3em;
   padding: 0.6em 1.2em;
   margin-top: 1.5rem;
-  width: 60%;
+  width: 40%;
   outline: none;
   color: rgb(96, 31, 218);
   background-color:  rgb(247, 245, 148);
@@ -69,15 +69,9 @@ form.login{
   flex-direction: column;
 }
 
-p.error {
-  text-align: left;
-  border-radius: 0.3em;
+.error {
+  text-align: center;
   color: red;
-  padding-top: 0;
-}
-
-.input-error {
-  border-left-color: red;
 }
 
 label {
