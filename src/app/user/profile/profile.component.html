@@ -1,22 +1,31 @@
 <div class="container">
-   <div class="profile">
-        <h3>Your profile</h3>
-        <div class="flex">
-            <p>Username: </p>
-            <p>Some username</p>
-        </div>
-        <div class="flex">
-            <p>Email: </p>
-            <p>Some email</p>
-        </div>
-        <div class="flex">
-            <p>Interested in offer for:</p>
-            <p>Some reservation</p>
-        </div>
-        <div class="flex">
-            <p>My reservations: </p>
-            <p>Some reservation</p>
-        </div>
-        <!-- <button class="edit-button">Edit</button> -->
+  <div class="profile">
+    <h3>Your profile</h3>
+    <div class="flex">
+      <p>Username: </p>
+      <p>{{user?.username}}</p>
     </div>
+    <div class="flex">
+      <p>Email: </p>
+      <p>{{user?.email}} - {{user!.userRole}} profile</p>
+    </div>
+    <ng-container *ngIf="userRole">
+      <div class="flex">
+        <p>My offers:</p>
+        <p>Some offers</p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!userRole">
+      <div class="flex">
+        <p>Interested in offer for:</p>
+        <p>Some interests</p>
+      </div>
+      <div class="flex">
+        <p>My reservations: </p>
+        <p>Some reservation</p>
+      </div>
+    </ng-container>
+
+    <!-- <button class="edit-button">Edit</button> -->
+  </div>
 </div>

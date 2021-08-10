@@ -4,7 +4,7 @@
          <p class="logo"><span class="logo">Travel Agency</span></p>
       </div>
       <div class="mini-navbar">
-         <ul>
+         <ul *ngIf="!isLoggedUser">
             <li>
                <a routerLink="/user/login">Login</a>
             </li>
@@ -12,17 +12,18 @@
                <a routerLink="/user/register">Register</a>
             </li>
          </ul>
-         <ul>
+         <ul *ngIf="isLoggedUser">
             <li>
-               <a routerLink="/user/profile">Welcome, username}</a>
+               <a routerLink="/user/profile">Welcome, {{userUsername}}</a>
             </li>
+            <li>{{role}}</li>
             <li>
                <a routerLink="/user/profile">Profile</a>
             </li>
             <li>
                <a routerLink="/user/reservations">My reservations</a>
             </li>
-            <li>Logout</li>
+            <li (click)="logout()">Logout</li>
          </ul>
       </div>
    </div>
@@ -34,7 +35,7 @@
          <li>
             <a routerLink="/catalog">Catalog</a>
          </li>
-         <li>
+         <li *ngIf="userRole">
             <a routerLink="/catalog/create">Create New Offer</a>
          </li>
          <li>

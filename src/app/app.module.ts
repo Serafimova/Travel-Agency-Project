@@ -9,9 +9,9 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { UserModule } from './user/user.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TermsComponent } from './terms/terms.component';
 import { OffersModule } from './offers/offers.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { OffersModule } from './offers/offers.module';
     CoreModule,
     UserModule,
     OffersModule,
-    FontAwesomeModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

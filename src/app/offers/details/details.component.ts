@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-details',
@@ -7,7 +8,11 @@ import { Component } from '@angular/core';
 })
 export class DetailsComponent {
 
-  constructor() { }
+  get userRole(): boolean {
+    return this.userService.user?.userRole === 'Agent';
+  }
+
+  constructor(private userService: UserService) { }
 
   showContacts = true;
   toggleText(): void {

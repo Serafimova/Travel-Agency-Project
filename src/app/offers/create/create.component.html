@@ -15,9 +15,9 @@
             </div>
             <div class="createOffer">
                 <label for="themeName">Image URL</label>
-                <input #imageUrlInput="ngModel" ngModel type="text" name="imageUrl" id="imageUrl" required>
+                <input #imageUrlInput="ngModel" ngModel type="text" name="imageUrl" id="imageUrl" required>  <!--[appCustomValidator]="URLValidator"-->
             </div>
-            <!-- check gor valid URL -->
+            <!-- check for valid URL -->
             <ng-container *ngIf="imageUrlInput.touched">
                 <div *ngIf="imageUrlInput.errors?.required" class="error">
                   This field is required!

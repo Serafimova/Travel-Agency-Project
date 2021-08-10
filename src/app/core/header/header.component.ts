@@ -1,15 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/shared/interfaces/user';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  user: IUser | null | undefined = undefined;
+  
 
-  ngOnInit(): void {
+  get isLoggedUser(): boolean {
+    return this.userService.isLoggedUser;
+  }
+
+  
+  get userRole():boolean {
+    return this.userService.user?.userRole==='Agent';
+  }
+
+  get role(): string {
+    return this.userService.user!.userRole;
+  }
+
+  get userUsername(): string {
+    return this.userService.user?.username || '';
+  }
+
+  constructor(private userService: UserService, private router: Router) {}
+
+  logout(): void {
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['/'])
+    })
   }
 
 }

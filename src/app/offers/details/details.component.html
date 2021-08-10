@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="offer">
-       <img src="" alt="default">
-       <h3>Offer name</h3>
-       <!-- <ng-container >
+  <div class="offer">
+    <img src="" alt="default">
+    <h3>Offer name</h3>
+    <!-- <ng-container *ngIf="userRole">
           <form>
               <div class="flex">
                   <p>Country</p>
@@ -30,40 +30,46 @@
               <button type="button" class="red-button">Cancel</button>
           </form>
           </ng-container> -->
-       <ng-container >
-          <form action="">
-             <div class="flex">
-                <p>Coutry: </p>
-                <p>coutry</p>
-             </div>
-             <div class="flex">
-                <p>Days: </p>
-                <p>days</p>
-             </div>
-             <div class="flex">
-                <p>Transport: </p>
-                <p>transport</p>
-             </div>
-             <div class="flex">
-                <p>Price: </p>
-                <p>price EUR</p>
-             </div>
-             <div class="flex">
-                <p>Description: </p>
-                <p>description</p>
-             </div>
-             <button class="edit-button">Edit</button>
-             <button class="red-button">Delete</button>
-             <button class="green-button">Book</button>
-             <!-- <p>You've already booked this trip!</p> -->
-          </form>
-          <br>
-          <h3>Need more infromation? Please, contact us</h3>
-          <button (click)="toggleText()">{{showContacts? 'Our Contacts':'Hide contacts'}}</button> 
-          <div *ngIf="!showContacts">
-             <br>
-             <b>Sofia 1000</b><br>phone: 0878/000 000<br>email: travelagency@gmail.com
-          </div>
-       </ng-container>
-    </div>
- </div> 
+
+
+    <ng-container>
+      <form action="">
+        <div class="flex">
+          <p>Coutry: </p>
+          <p>coutry</p>
+        </div>
+        <div class="flex">
+          <p>Days: </p>
+          <p>days</p>
+        </div>
+        <div class="flex">
+          <p>Transport: </p>
+          <p>transport</p>
+        </div>
+        <div class="flex">
+          <p>Price: </p>
+          <p>price EUR</p>
+        </div>
+        <div class="flex">
+          <p>Description: </p>
+          <p>description</p>
+        </div>
+        <ng-container *ngIf="userRole">
+          <button class="edit-button">Edit</button>
+          <button class="red-button">Delete</button>
+        </ng-container>
+        <ng-container *ngIf="!userRole">
+          <button class="green-button">Book</button>
+          <!-- <p>You've already booked this trip!</p> -->
+        </ng-container>
+      </form>
+      <br>
+      <h3>Need more infromation? Please, contact us</h3>
+      <button (click)="toggleText()">{{showContacts? 'Our Contacts':'Hide contacts'}}</button>
+      <div *ngIf="!showContacts">
+        <br>
+        <b>Sofia 1000</b><br>phone: 0878/000 000<br>email: travelagency@gmail.com
+      </div>
+    </ng-container>
+  </div>
+</div>

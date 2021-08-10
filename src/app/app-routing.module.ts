@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { AuthGuardService } from './core/auth-guard.service';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -24,34 +25,31 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-  // {
-  //   path: 'catalog',
-  //   component: CatalogComponent
-  // },
   {
     path: 'catalog',
     children: [
       {
         path: '',
-        pathMatch:'full',
+        pathMatch: 'full',
         component: CatalogComponent
       },
       {
         path: 'details',
-        component: DetailsComponent
+        component: DetailsComponent,
+        canActivate: [AuthGuardService],
+        data:{
+          needAuthentication: true
+        }
       },
       {
         path: 'create',
-        component: CreateComponent
+        component: CreateComponent,
+       canActivate: [AuthGuardService],
+        data: {
+          needAuthentication: true,
+          agentProfile: true
+        }
       }
-      // {
-      //   path: 'profile',
-      //   component: ProfileComponent
-      // },
-      // {
-      //   path: 'reservations',
-      //   component: ReservationsComponent
-      // },
     ]
   },
   {
@@ -75,19 +73,29 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+
       },
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
+
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          needAuthentication: true
+        }
       },
       {
         path: 'reservations',
-        component: ReservationsComponent
+        component: ReservationsComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          needAuthentication: true
+        }
       },
     ]
   },

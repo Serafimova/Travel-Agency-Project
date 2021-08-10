@@ -1,7 +1,12 @@
 <div class="container">
-  <form #form="ngForm" class="register" action="" method="post">
+  <form #form="ngForm" class="register" action="" method="post" (ngSubmit)="register(form)">
     <fieldset>
       <h2>Registration Form</h2>
+
+      <div *ngIf="form.touched && form.invalid" class="error">
+        All fields are required!
+      </div>
+
       <div class="field field-icon">
         <label for="username">Username</label>
         <input #usernameInput="ngModel" ngModel type="text" name="username" id="username"
@@ -42,24 +47,34 @@
         </div>
       </ng-container>
       <div class="field field-icon">
-        <label for="rePassword">Repeat Password</label>
-        <input #repeatPasswordIput="ngModel" ngModel type="password" name="rePassword" id="rePassword" placeholder="******" required>
-        <!-- check if both password match -->
+        <label for="repeatPassword">Repeat Password</label>
+        <input #repeatPasswordIput="ngModel" ngModel type="password" name="repeatPassword" id="repeatPassword"
+          placeholder="******" required [pattern]="passwordInput.value">
       </div>
       <ng-container *ngIf="repeatPasswordIput.touched">
         <div *ngIf="repeatPasswordIput.errors?.required" class="error">
           Repeat password is required!
         </div>
+        <div *ngIf="repeatPasswordIput.errors?.pattern" class="error">
+          Password and Repeat password doesn't match!
+        </div>
       </ng-container>
-      <div>
-        <label for="role">Register as:</label>
-        <select id="role" name="role" required>
-          <option value="1">Client</option>
-          <option value="2">Agent</option>
-        </select>
+      <div class="field field-icon">
+        <label for="userRole">Are you an Agent or a Client?</label>
+        <input #userRoleInput="ngModel" ngModel type="text" name="userRole" id="userRole" placeholder="Agent or Client"
+          required>
+        <ng-container *ngIf="userRoleInput.touched">
+          <div *ngIf="userRoleInput.errors?.required" class="error">
+            Please choose your role - Agent or Client!
+          </div>
+          <!--  -->
+          <div *ngIf="(userRoleInput.value!=='Agent' && userRoleInput.value!=='Client')" class="error">
+            There is no such role! Please choose between Agent and Client!
+          </div>
+        </ng-container>
       </div>
       <br>
-      <button>Create Account</button>
+      <button [disabled]="form.invalid">Create Account</button>
       <p class="text-center">
         Already have an account? <br>
         <a routerLink='/user/login'>Log In</a>

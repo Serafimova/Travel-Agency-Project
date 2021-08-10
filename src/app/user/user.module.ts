@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AppModule } from '../app.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { FormsModule } from '@angular/forms';
-
-
+import { UserService } from './user.service';
 
 
 
@@ -24,6 +22,9 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     FormsModule
+  ],
+  providers:[
+    UserService
   ]
 })
 export class UserModule { }
