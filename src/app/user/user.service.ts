@@ -47,9 +47,15 @@ export class UserService {
     return loggedUser;
   }
 
+  editProfile(inputData: { username: string, email: string }) {
+    const loggedUser = this.http.put<IUser>(`${apiURL}/users/profile`, inputData, { withCredentials: true })
+      .pipe(tap(user => { this.user = user; }));
+    return loggedUser;
+  }
+
   logout() {
     return this.http.post<IUser>(`${apiURL}/logout`, {}, { withCredentials: true }).pipe(
-      tap(() => { this.user = undefined; this.localStorage.removeItem('USER')})
+      tap(() => { this.user = undefined; this.localStorage.removeItem('USER') })
     );
   }
 }

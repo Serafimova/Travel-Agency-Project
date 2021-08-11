@@ -1,31 +1,55 @@
 <div class="container">
   <div class="profile">
     <h3>Your profile</h3>
-    <div class="flex">
-      <p>Username: </p>
-      <p>{{user?.username}}</p>
+    <div *ngIf="serverError" class="error">
+      Something went wrong! Please try again later!
     </div>
-    <div class="flex">
-      <p>Email: </p>
-      <p>{{user?.email}} - {{user!.userRole}} profile</p>
-    </div>
-    <ng-container *ngIf="userRole">
-      <div class="flex">
-        <p>My offers:</p>
-        <p>Some offers</p>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="!userRole">
-      <div class="flex">
-        <p>Interested in offer for:</p>
-        <p>Some interests</p>
-      </div>
-      <div class="flex">
-        <p>My reservations: </p>
-        <p>Some reservation</p>
-      </div>
+    <br>
+    <ng-container *ngIf="!editProfile">
+      <form>
+        <div class="flex">
+          <p>Username: </p>
+          <p>{{user?.username}}</p>
+        </div>
+        <div class="flex">
+          <p>Email: </p>
+          <p>{{user?.email}}</p>
+        </div>
+        <div class="flex">
+          <p>Profile: </p>
+          <p>{{user!.userRole}} profile</p>
+        </div>
+        <!-- Agent -->
+        <ng-container *ngIf="userRole">
+          <div class="flex">
+            <p>My offers:</p>
+            <p>Some offers</p>
+          </div>
+        </ng-container>
+        <!-- Client -->
+        <ng-container *ngIf="!userRole">
+          <div class="flex">
+            <p>My reservations: </p>
+            <p>Some reservation</p>
+          </div>
+        </ng-container>
+        <button (click)="editProfile=true" class="edit-button">Edit</button>
+      </form>
     </ng-container>
 
-    <!-- <button class="edit-button">Edit</button> -->
+    <ng-container *ngIf="editProfile">
+      <form #form="ngForm" (ngSubmit)="editUserProfile(form)">
+        <div class="flex">
+          <p>Username: </p>
+          <input type="text" name="username" id="username" [ngModel]="user!.username">
+        </div>
+        <div class="flex">
+          <p>Email: </p>
+          <input type="email" name="email" id="email" [ngModel]="user!.email">
+        </div>
+        <button class="green-button">Save</button>
+        <button type="button" (click)="editProfile= false" class="red-button">Cancel</button>
+      </form>
+    </ng-container>
   </div>
 </div>

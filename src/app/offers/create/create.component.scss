@@ -1,68 +1,68 @@
 .offer {
-    border-radius: 1em;
-    width: 60%;
-   margin: 2em auto 1rem;
-    padding: .5em;
-    border: .3em solid rgb(234, 236, 106);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: rgb(96, 31, 218);
-    background-color: hsla(0, 0%, 94.1%, .8);
-    box-shadow: 0 0 1em 0 #000;
-    text-align: center;
+  border-radius: 1em;
+  width: 60%;
+  margin: 2em auto 1rem;
+  padding: .5em;
+  border: .3em solid rgb(234, 236, 106);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(96, 31, 218);
+  background-color: hsla(0, 0%, 94.1%, .8);
+  box-shadow: 0 0 1em 0 #000;
+  text-align: center;
 }
 
 .createOffer textarea {
-    width: 55%;
-    padding: 0.5em;
-    margin: 0;
-    align-content: center;
+  width: 55%;
+  padding: 0.5em;
+  margin: 0;
+  align-content: center;
 }
 
 .createOffer input {
-    width: 55%;
-    border-radius: 0.3em;
-    padding: 0.35em;
+  width: 55%;
+  border-radius: 0.3em;
+  padding: 0.35em;
 }
 
 button {
-    border: none;
-    border-radius: 0.3em;
-    padding: 0.6em 1.2em;
-    outline: solid;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    color: rgb(96, 31, 218);
-    background-color: rgb(234, 236, 106);
+  border: s;
+  border-radius: 0.3em;
+  padding: 0.6em 1.2em;
+  outline: solid;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: rgb(96, 31, 218);
+  background-color: rgb(234, 236, 106);
 }
 
-button:hover{
-    text-decoration: underline;
-    font-style: italic;
-    font-weight: bolder;
+button:hover {
+  text-decoration: underline;
+  font-style: italic;
+  font-weight: bolder;
 }
 
 button+button {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .error {
-    text-align: center;
-    color: red;
-  }
+  text-align: center;
+  color: red;
+}
 
 label {
-    display: block;
-    text-decoration: bold;
-    text-align: center;
+  display: block;
+  text-decoration: bold;
+  text-align: center;
 }
 
 .red-button {
-    color: rgb(3, 3, 3);
-    background-color: red;
+  color: rgb(3, 3, 3);
+  background-color: red;
 }
 
 .green-button {
-    color: rgb(3, 3, 3);
-    background-color: green;
+  color: rgb(3, 3, 3);
+  background-color: green;
 }
