@@ -37,17 +37,19 @@ const routes: Routes = [
         path: 'details',
         component: DetailsComponent,
         canActivate: [AuthGuardService],
-        data:{
-          needAuthentication: true
+        data: {
+          needAuthentication: true,
+          URLToRedirect: '/user/login'
         }
       },
       {
         path: 'create',
         component: CreateComponent,
-       canActivate: [AuthGuardService],
+        canActivate: [AuthGuardService],
         data: {
           needAuthentication: true,
-          agentProfile: true
+          agentProfile: true,
+          URLToRedirect: '/user/login'
         }
       }
     ]
@@ -74,19 +76,28 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
-
+        canActivate: [AuthGuardService],
+        data: {
+          needAuthentication: false,
+          URLToRedirect: '/'
+        }
       },
       {
         path: 'register',
         component: RegisterComponent,
-
+        canActivate: [AuthGuardService],
+        data: {
+          needAuthentication: false,
+          URLToRedirect: '/'
+        }
       },
       {
         path: 'profile',
         component: ProfileComponent,
         canActivate: [AuthGuardService],
         data: {
-          needAuthentication: true
+          needAuthentication: true,
+          URLToRedirect: '/user/login'
         }
       },
       {

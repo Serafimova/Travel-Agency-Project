@@ -16,7 +16,6 @@ export class HeaderComponent {
   get isLoggedUser(): boolean {
     return this.userService.isLoggedUser;
   }
-
   
   get userRole():boolean {
     return this.userService.user?.userRole==='Agent';
@@ -30,7 +29,9 @@ export class HeaderComponent {
     return this.userService.user?.username || '';
   }
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {
+    
+  }
 
   logout(): void {
     this.userService.logout().subscribe(() => {

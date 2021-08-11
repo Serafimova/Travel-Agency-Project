@@ -13,15 +13,13 @@ export class LoginComponent {
 
   constructor(private userService: UserService, private router: Router) { }
 
-
-
   wrong = false;
   login(form: NgForm): void {
     if (form.invalid) { return };
     const { email, password } = form.value;
     this.userService.login({ email, password }).subscribe({
       next: () => {
-      console.log(this.userService.user?.userRole)
+    //  console.log(this.userService.user?.userRole)
         this.router.navigate(['/catalog'])
       },
       error: (err) => {
