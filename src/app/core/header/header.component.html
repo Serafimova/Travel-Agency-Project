@@ -1,56 +1,55 @@
-
 <header>
-   <div class="mini-navbar-wrap">
-      <div class="logo-wrap">
-         <p class="logo"><span class="logo">Travel Agency</span></p>
-      </div>
-      <div class="mini-navbar">
-         <ul *ngIf="!isLoggedUser">
-            <li>
-               <a routerLink="/user/login">Login</a>
-            </li>
-            <li>
-               <a routerLink="/user/register">Register</a>
-            </li>
-         </ul>
-         <ul *ngIf="isLoggedUser">
-            <li>
-               <a routerLink="/user/profile">Welcome, {{userUsername}}</a>
-            </li>
-            <li>{{role}}</li>
-            <li>
-               <a routerLink="/user/profile">Profile</a>
-            </li>
-            <li>
-               <a routerLink="/user/reservations">My reservations</a>
-            </li>
-            <li (click)="logout()">Logout</li>
-         </ul>
-      </div>
-   </div>
-   <nav>
-      <ul>
-         <li>
-            <a routerLink="/home">Home</a>
-         </li>
-         <li>
-            <a routerLink="/catalog">Catalog</a>
-         </li>
-         <li *ngIf="userRole">
-            <a routerLink="/catalog/create">Create New Offer</a>
-         </li>
-         <li>
-            <a routerLink="/terms">Terms and Conditions</a>
-         </li>
-         <li>
-            <a routerLink="/about">About</a>
-         </li>
-         <li>
-            <a routerLink="/contacts">Contacts</a>
-         </li>
-         <li>
-            <a routerLink="/faq">FAQ</a>
-         </li>
+  <div class="mini-navbar-wrap">
+    <div class="logo-wrap">
+      <p class="logo"><span class="logo">Travel Agency</span></p>
+    </div>
+    <div class="mini-navbar">
+      <ul *ngIf="!isLoggedUser">
+        <li>
+          <a routerLink="/user/login">Login</a>
+        </li>
+        <li>
+          <a routerLink="/user/register">Register</a>
+        </li>
       </ul>
-   </nav>
+      <ul *ngIf="isLoggedUser">
+        <li>
+          <a routerLink="/user/profile">Welcome, {{userUsername}}</a>
+        </li>
+        <li [ngClass]="[userRole ? 'agent':'']">{{role}}</li>
+       <li *ngIf="userRole">
+         <a routerLink="/user/myOffers">My offers</a>
+       </li>
+        <li *ngIf="!userRole">
+          <a routerLink="/user/reservations">My reservations</a>
+        </li>
+        <li (click)="logout()">Logout</li>
+      </ul>
+    </div>
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+        <a routerLink="/catalog">Catalog</a>
+      </li>
+      <li *ngIf="userRole">
+        <a routerLink="/catalog/create">Create New Offer</a>
+      </li>
+      <li>
+        <a routerLink="/terms">Terms and Conditions</a>
+      </li>
+      <li>
+        <a routerLink="/about">About</a>
+      </li>
+      <li>
+        <a routerLink="/contacts">Contacts</a>
+      </li>
+      <li>
+        <a routerLink="/faq">FAQ</a>
+      </li>
+    </ul>
+  </nav>
 </header>

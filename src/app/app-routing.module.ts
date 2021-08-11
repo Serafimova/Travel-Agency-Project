@@ -11,6 +11,7 @@ import { CreateComponent } from './offers/create/create.component';
 import { DetailsComponent } from './offers/details/details.component';
 import { TermsComponent } from './terms/terms.component';
 import { LoginComponent } from './user/login/login.component';
+import { MyOffersComponent } from './user/my-offers/my-offers.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { RegisterComponent } from './user/register/register.component';
 import { ReservationsComponent } from './user/reservations/reservations.component';
@@ -105,7 +106,18 @@ const routes: Routes = [
         component: ReservationsComponent,
         canActivate: [AuthGuardService],
         data: {
-          needAuthentication: true
+          needAuthentication: true,
+          URLToRedirect: '/user/login',
+        }
+      },
+        {
+        path: 'myOffers',
+        component: MyOffersComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          needAuthentication: true,
+          URLToRedirect: '/user/login',
+          agentProfile: true,
         }
       },
     ]

@@ -7,6 +7,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './user.service';
+import { MyOffersComponent } from './my-offers/my-offers.component';
 
 
 
@@ -16,7 +17,8 @@ import { UserService } from './user.service';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    MyOffersComponent
   ],
   imports: [
     CommonModule,
