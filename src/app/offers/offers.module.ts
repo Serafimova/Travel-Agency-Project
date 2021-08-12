@@ -5,6 +5,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
+import { OfferService } from './offer.service';
 
 
 
@@ -19,5 +20,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
+  providers: [
+    OfferService
+  ]
 })
 export class OffersModule { }

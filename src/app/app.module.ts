@@ -12,6 +12,7 @@ import { FaqComponent } from './faq/faq.component';
 import { TermsComponent } from './terms/terms.component';
 import { OffersModule } from './offers/offers.module';
 import { HttpClientModule } from '@angular/common/http';
+import { OfferService } from './offers/offer.service';
 
 @NgModule({
   declarations: [
@@ -25,11 +26,11 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     UserModule,
     OffersModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

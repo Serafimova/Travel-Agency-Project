@@ -64,9 +64,9 @@
         <input #userRoleInput="ngModel" ngModel type="text" name="userRole" id="userRole" placeholder="Agent or Client"
           required>
         <ng-container *ngIf="userRoleInput.touched">
-          <div *ngIf="userRoleInput.errors?.required" class="error">
+          <!-- <div *ngIf="userRoleInput.errors?.required" class="error">
             Please choose your role - Agent or Client!
-          </div>
+          </div> -->
           <!--  -->
           <div *ngIf="(userRoleInput.value!=='Agent' && userRoleInput.value!=='Client')" class="error">
             There is no such role! Please choose between Agent and Client!

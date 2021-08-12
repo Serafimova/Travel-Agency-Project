@@ -12,8 +12,12 @@ export class DetailsComponent {
     return this.userService.user?.userRole === 'Agent';
   }
 
-  constructor(private userService: UserService) { }
+  editOffer = false;
 
+  constructor(private userService: UserService) { }
+  
+  
+  serverError = false;
   showContacts = true;
   toggleText(): void {
     this.showContacts = !this.showContacts;
