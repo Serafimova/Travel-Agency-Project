@@ -14,7 +14,6 @@ export class CatalogComponent {
   offers: IOffer[] | undefined;
 
   constructor(private offerService: OfferService) {
-
     this.getOffers();
   }
 

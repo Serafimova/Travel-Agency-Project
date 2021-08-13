@@ -12,7 +12,8 @@ import { FaqComponent } from './faq/faq.component';
 import { TermsComponent } from './terms/terms.component';
 import { OffersModule } from './offers/offers.module';
 import { HttpClientModule } from '@angular/common/http';
-import { OfferService } from './offers/offer.service';
+import { FaqService } from './faq/faq.service';
+import { FaqModule } from './faq/faq.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { OfferService } from './offers/offer.service';
     AboutComponent,
     ContactsComponent,
     NotFoundComponent,
-    FaqComponent,
+   // FaqComponent,
     TermsComponent
   ],
   imports: [
@@ -29,10 +30,11 @@ import { OfferService } from './offers/offer.service';
     CoreModule,
     UserModule,
     OffersModule,
+    FaqModule,
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [FaqService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

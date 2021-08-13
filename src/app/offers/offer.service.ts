@@ -8,7 +8,8 @@ const apiURL = environment.apiUrl;
 
 @Injectable()
 export class OfferService {
-offer: IOffer | undefined;
+
+  offer: IOffer | undefined;
 
   constructor(private http: HttpClient) { }
 

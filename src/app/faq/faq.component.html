@@ -1,9 +1,46 @@
 <div class="faq">
-    <h1>Frequently Asked Questions</h1>
-    <br>
-    <ul>
-        <li><b> Lorem ipsum...</b> - some description here</li>
-        <li><b> Lorem ipsum...</b> - some description here</li>
-        <li><b> Lorem ipsum...</b> - some description here</li>
-    </ul>
+  <h1>Frequently Asked Questions</h1>
+  <br>
+
+  <ng-container *ngIf="userRole">
+      <button (click)="addNew=true" class="add">Add New Question</button>
+      <ng-container *ngIf="addNew">
+
+     
+    <div class="container">
+      <div class="offer">
+        <form #form="ngForm" (ngSubmit)="createNewQuestion(form)">
+          <div class="flex">
+            <p>Question</p>
+            <input #questionInput="ngModel" ngModel type="text" name="question" id="question" required>
+          </div>
+          <ng-container *ngIf="questionInput.touched">
+              <div *ngIf="questionInput.errors?.required" class="error">
+                  This field is required!
+                </div>
+            </ng-container>
+          <div class="flex">
+            <p>Answer</p>
+            <input #answerInput="ngModel" ngModel type="text" name="answer" id="answer" required>
+          </div>
+          <ng-container *ngIf="answerInput.touched">
+          <div *ngIf="answerInput.errors?.required" class="error">
+            This field is required!
+          </div>
+        </ng-container>
+          <br>
+          <button class="green-button">Save</button>
+          <button type="button" (click)="addNew=false" class="red-button">Cancel</button>
+        </form>
+      </div>
+    </div>
+</ng-container>
+  </ng-container>
+  <div *ngIf="!questions">Loading offers...</div>
+  <ng-container *ngIf="questions">
+    <ul *ngFor="let faq of questions" class="singleOffer">
+    <li><b>{{faq.question}}</b> - {{faq.answer}}</li>
+   
+  </ul>
+</ng-container>
 </div>
