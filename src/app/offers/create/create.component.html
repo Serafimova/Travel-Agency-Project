@@ -26,7 +26,6 @@
                 <label for="imageUrl">Image URL</label>
                 <input #imageUrlInput="ngModel" ngModel type="text" name="imageUrl" id="imageUrl" placeholder="image URL" required pattern="^http(s?):\/\/[a-zA-Z0-9\.]{1,}[\/a-zA-Z0-9_\.-]{1,}">
             </div>
-            <!-- check for valid URL -->
             <ng-container *ngIf="imageUrlInput.touched">
                 <div *ngIf="imageUrlInput.errors?.required" class="error">
                   This field is required!

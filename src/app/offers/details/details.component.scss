@@ -18,8 +18,8 @@ h3 {
 }
 
 img {
-    width: 7em;
-    height: 7em;
+    width: 60%;
+    height: 50%;
     margin: auto;
     display: block;
 }
@@ -79,3 +79,9 @@ button:hover{
 button+button {
     margin-left: 1rem;
 }
+
+.error {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+  }

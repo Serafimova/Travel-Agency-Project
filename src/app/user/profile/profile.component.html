@@ -20,19 +20,19 @@
           <p>{{user!.userRole}} profile</p>
         </div>
         <!-- Agent -->
-        <ng-container *ngIf="userRole">
+        <!-- <ng-container *ngIf="userRole">
           <div class="flex">
             <p>My offers:</p>
-            <p>Some offers</p>
+            <p>{{user!.offers}}</p>
           </div>
-        </ng-container>
+        </ng-container> -->
         <!-- Client -->
-        <ng-container *ngIf="!userRole">
+        <!-- <ng-container *ngIf="!userRole">
           <div class="flex">
             <p>My reservations: </p>
             <p>Some reservation</p>
           </div>
-        </ng-container>
+        </ng-container> -->
         <button (click)="editProfile=true" class="edit-button">Edit</button>
       </form>
     </ng-container>
@@ -41,11 +41,17 @@
       <form #form="ngForm" (ngSubmit)="editUserProfile(form)">
         <div class="flex">
           <p>Username: </p>
-          <input type="text" name="username" id="username" [ngModel]="user!.username">
+          <input #usernameInput="ngModel" type="text" name="username" id="username" minlength="4" [ngModel]="user!.username">
+        </div>
+        <div *ngIf="usernameInput.errors?.minlength" class="error">
+          Username must be at least 4 characters long!
         </div>
         <div class="flex">
           <p>Email: </p>
-          <input type="email" name="email" id="email" [ngModel]="user!.email">
+          <input #emailInput="ngModel" type="email" name="email" id="email" email [ngModel]="user!.email">
+        </div>
+        <div *ngIf="emailInput.errors?.email" class="error">
+          Please enter a valid email!
         </div>
         <button class="green-button">Save</button>
         <button type="button" (click)="editProfile= false" class="red-button">Cancel</button>

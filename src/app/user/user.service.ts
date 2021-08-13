@@ -25,6 +25,10 @@ export class UserService {
     return this.user!.userRole;
   }
 
+  get userId(): string{
+    return this.user!._id;
+  }
+
   constructor(private http: HttpClient, @Inject(LocalStorage) private localStorage: Window['localStorage']) {
     try {
       const localStorageUser = this.localStorage.getItem('USER') || 'ERROR';

@@ -6,6 +6,7 @@ export interface IOffer {
     days: string;
     transport: string;
     price: string;
+    description: string;
     userId: {
         _id: string;
         userRole: string;

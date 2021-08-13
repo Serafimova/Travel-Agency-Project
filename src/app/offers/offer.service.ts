@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IOffer } from '../shared/interfaces';
 
@@ -7,6 +8,7 @@ const apiURL = environment.apiUrl;
 
 @Injectable()
 export class OfferService {
+offer: IOffer | undefined;
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +22,11 @@ export class OfferService {
 
   createOffer(offerData: any) {
     return this.http.post<IOffer>(`${apiURL}/offers`, offerData, { withCredentials: true });
+  }
+
+  editOffer(offerData: { days: string, price:string, description: string }, id: string) {
+    return this.http.put<IOffer>(`${apiURL}/offers/${id}`, offerData, { withCredentials: true })
+    .pipe(tap(offer => this.offer = offer));
   }
 
 }

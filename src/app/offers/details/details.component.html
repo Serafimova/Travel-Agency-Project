@@ -1,40 +1,41 @@
 <div class="container">
   <div class="offer">
-    <img src="" alt="offer image">
-    <h3>Offer name</h3>
+    <img src="{{offer?.imageUrl}}" alt="offer image">
+    <h3>{{offer?.offerName}}</h3>
     <div *ngIf="serverError" class="error">
       Something went wrong! Please try again later!
     </div>
+    
     <ng-container *ngIf="!editOffer">
       <form>
         <div class="flex">
           <p>Coutry: </p>
-          <p>coutry</p>
+          <p>{{offer?.country}}</p>
         </div>
         <div class="flex">
           <p>Days: </p>
-          <p>days</p>
+          <p>{{offer?.days}}</p>
         </div>
         <div class="flex">
           <p>Transport: </p>
-          <p>transport</p>
+          <p>{{offer?.transport}}</p>
         </div>
         <div class="flex">
           <p>Price: </p>
-          <p>price EUR</p>
+          <p>{{offer?.price}} EUR</p>
         </div>
         <div class="flex">
           <p>Description: </p>
-          <p>description</p>
+          <p>{{offer?.description}}</p>
         </div>
-        <ng-container *ngIf="userRole">
+        <!-- <ng-container *ngIf="userRole">
           <button (click)="editOffer=true" class="edit-button">Edit</button>
           <button class="red-button">Delete</button>
         </ng-container>
         <ng-container *ngIf="!userRole">
           <button class="green-button">Book</button>
-          <!-- <p>You've already booked this trip!</p> -->
-        </ng-container>
+         <p>You've already booked this trip!</p>
+        </ng-container> -->
       </form>
       <br>
       <h3>Need more infromation? Please, contact us</h3>
@@ -46,28 +47,32 @@
     </ng-container>
 
 
-    <ng-container *ngIf="userRole&&editOffer">
-      <form>
-        <div class="flex">
-          <p>Country</p>
-          <input type="text" name="country" id="coutry">
-        </div>
+    <ng-container *ngIf="userRole && editOffer">
+      <form #form="ngForm" > <!--(ngSubmit)="editCurrentOffer(form)"-->
         <!-- Errors -->
         <div class="flex">
           <p>Days</p>
-          <input type="number" name="days" id="days">
+          <input #daysInput="ngModel" type="number" name="days" min="1" id="days" [ngModel]="offer!.days" required>
         </div>
-        <div class="flex">
-          <p>Transport</p>
-          <input type="text" name="transport" id="transport">
+        <div *ngIf="daysInput.errors?.required" class="error">
+          This field is required and must be number!
         </div>
         <div class="flex">
           <p>Price</p>
-          <input type="number" name="price" id="price">
+          <input #priceInput="ngModel" type="number" min="1" name="price" id="price" [ngModel]="offer!.price" required>
+        </div>
+        <div *ngIf="priceInput.errors?.required" class="error">
+          This field is required and must be number!
         </div>
         <div class="flex">
           <p>Description</p>
-          <textarea type="text" name="description" id="description" rows="8"></textarea>
+          <textarea #descriptionInput="ngModel" type="text" name="description" id="description" rows="8" [ngModel]="offer!.description" required minlength="20"></textarea>
+        </div>
+        <div *ngIf="descriptionInput.errors?.required" class="error">
+          Description is required!
+        </div>
+        <div *ngIf="descriptionInput.errors?.minlength" class="error">
+          Descriptionshould be at least 20 characters long!
         </div>
         <br>
         <button class="green-button">Save</button>

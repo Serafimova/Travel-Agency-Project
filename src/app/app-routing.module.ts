@@ -27,6 +27,16 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'create',
+    component: CreateComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      needAuthentication: true,
+      agentProfile: true,
+      URLToRedirect: '/user/login'
+    }
+  },
+  {
     path: 'catalog',
     children: [
       {
@@ -35,7 +45,7 @@ const routes: Routes = [
         component: CatalogComponent
       },
       {
-        path: 'details',
+        path: ':offerId',
         component: DetailsComponent,
         canActivate: [AuthGuardService],
         data: {
@@ -43,16 +53,16 @@ const routes: Routes = [
           URLToRedirect: '/user/login'
         }
       },
-      {
-        path: 'create',
-        component: CreateComponent,
-        canActivate: [AuthGuardService],
-        data: {
-          needAuthentication: true,
-          agentProfile: true,
-          URLToRedirect: '/user/login'
-        }
-      }
+      // {
+      //   path: 'create',
+      //   component: CreateComponent,
+      //   canActivate: [AuthGuardService],
+      //   data: {
+      //     needAuthentication: true,
+      //     agentProfile: true,
+      //     URLToRedirect: '/user/login'
+      //   }
+      // }
     ]
   },
   {

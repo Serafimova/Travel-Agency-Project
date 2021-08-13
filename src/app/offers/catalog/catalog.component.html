@@ -1,8 +1,11 @@
 <div class="catalog">
-<div class="singleOffer">
-    <img src="" alt="" class="picture">
-    <h3>name</h3>
-    <button routerLink="/catalog/details">Details</button>
-<!-- if user - details, if not - login -->
-</div>
+  <div *ngIf="!offers">Loading offers...</div>
+  <ng-container *ngIf="offers">
+    <div *ngFor="let singleOffer of offers" class="singleOffer">
+      <img src="{{singleOffer.imageUrl}}" alt="offer image" class="picture">
+      <h3>{{singleOffer.offerName}}</h3>
+      <p>{{singleOffer.description}}</p>
+      <button [routerLink]="['/catalog', singleOffer._id]">Details</button>
     </div>
+  </ng-container>
+</div>
