@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocalStorage } from './injectionToken';
 import { AuthGuardService } from './auth-guard.service';
 
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -25,7 +24,6 @@ import { AuthGuardService } from './auth-guard.service';
   providers: [{
     provide: LocalStorage,
     useFactory: (usedPlatform: Object) => {
-
       if (isPlatformBrowser(usedPlatform)) {
         return window.localStorage;
       }
@@ -37,6 +35,7 @@ import { AuthGuardService } from './auth-guard.service';
           clear(): void {
             this.data = {};
           }
+
           getItem(key: string): string | null {
             return this.data[key];
           }
@@ -53,16 +52,12 @@ import { AuthGuardService } from './auth-guard.service';
             this.data[key] = value;
           }
         }
-
       }
       throw Error('Not Implemented!');
     },
     deps: [PLATFORM_ID]
-    // useValue: window.localStorage
   },
-  AuthGuardService
+    AuthGuardService
   ],
 })
-export class CoreModule {
-
-}
+export class CoreModule { }

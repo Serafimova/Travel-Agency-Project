@@ -7,8 +7,6 @@ import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { OfferService } from './offer.service';
 
-
-
 @NgModule({
   declarations: [
     CatalogComponent,

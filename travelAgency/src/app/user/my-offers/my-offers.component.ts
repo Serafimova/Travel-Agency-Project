@@ -18,7 +18,6 @@ export class MyOffersComponent {
     this.user = undefined;
     this.userService.getUserProfile().pipe(tap(user => console.log(user))).subscribe(user => this.user = user);
   }
-
  
   get userOffers(): any {
     return this.user?.offers;
@@ -28,22 +27,7 @@ export class MyOffersComponent {
     return this.userService.user?.offers.length==0;
   }
 
-  get isLoggedUser(): boolean {
-    return this.userService.isLoggedUser;
-  }
-
-  get userRole(): boolean {
-    return this.userService.user?.userRole === 'Agent';
-  }
-
-  editProfile = false;
-
   constructor(private userService: UserService, private offerService: OfferService) {
     this.getUserInfo();
-    this.offers?.map(o => console.log('offername', o.offerName))
   }
-
-
-
-  
 }

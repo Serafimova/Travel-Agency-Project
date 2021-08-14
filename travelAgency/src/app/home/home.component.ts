@@ -19,7 +19,7 @@ export class HomeComponent {
 
   getOffers(): void {
     this.offers = undefined;
-    this.offerService.getAllOffers().pipe(tap(offers => console.log(offers))).subscribe(offers => this.offers = offers)
+    this.offerService.getAllOffers().subscribe(offers => this.offers = offers)
   }
 
   searchResult: any[] | undefined;

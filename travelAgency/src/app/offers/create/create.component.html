@@ -1,83 +1,92 @@
 <div class="offer">
-            <h3>Create New Offer</h3>
-        <form #form="ngForm" (ngSubmit)="createNewOffer(form)">
-            <div class="createOffer">
-                <label for="offerName">Offer name</label>
-                <input #offerNameInput="ngModel" ngModel type="text" name="offerName" id="offerName" placeholder="Offer name" required minlength="6">
-                <ng-container *ngIf="offerNameInput.touched">
-                    <div *ngIf="offerNameInput.errors?.required" class="error">
-                      Offer name is required!
-                    </div>
-                    <div *ngIf="offerNameInput.errors?.minlength" class="error">
-                      Offer name should be at least 6 characters long!
-                    </div>
-                  </ng-container>
-            </div>
-            <div class="createOffer">
-              <label for="country">Coutry</label>
-              <input #countryInput="ngModel" ngModel type="text" name="country" id="country" placeholder="Country" required>
-              <ng-container *ngIf="countryInput.touched">
-                  <div *ngIf="countryInput.errors?.required" class="error">
-                    This field is required!
-                  </div>
-                </ng-container>
-          </div>
-            <div class="createOffer">
-                <label for="imageUrl">Image URL</label>
-                <input #imageUrlInput="ngModel" ngModel type="text" name="imageUrl" id="imageUrl" 
-                placeholder="image URL" required pattern="^http(s?):\/\/[a-zA-Z0-9\.]{1,}[\/a-zA-Z0-9_\.\?\&\%=\-:]{1,}">
-            </div>
-            <ng-container *ngIf="imageUrlInput.touched">
-                <div *ngIf="imageUrlInput.errors?.required" class="error">
-                  This field is required!
-                </div>
-                <div *ngIf="imageUrlInput.errors?.pattern" class="error">
-                Invalid URL! Please enter a valid URL!
-                </div>
-              </ng-container>
-            <div class="createOffer">
-                <label for="days">Days</label>
-                <input #daysInput="ngModel" ngModel type="number" min="1" name="days" id="days" placeholder="Days" required>
-            </div>
-            <ng-container *ngIf="daysInput.touched">
-              <div *ngIf="daysInput.errors?.required" class="error">
-                This field is required and must be number!
-              </div>
-            </ng-container>
-            <div class="createOffer">
-                <label for="transport">Transport</label>
-                <input #transportInput="ngModel" ngModel type="text" name="transport" id="transport" 
-                placeholder="Transport" required>
-            </div>
-            <ng-container *ngIf="transportInput.touched">
-              <div *ngIf="transportInput.errors?.required" class="error">
-                This field is required!
-              </div>
-            </ng-container>
-            <div class="createOffer">
-                <label for="price">Price (EUR)</label>
-                <input #priceInput="ngModel" ngModel type="number" min="1" name="price" id="price" 
-                placeholder="Price in EUR" required>
-            </div>
-            <ng-container *ngIf="priceInput.touched">
-              <div *ngIf="priceInput.errors?.required" class="error">
-                This field is required and must be number!
-              </div>
-            </ng-container>
-            <div class="createOffer">
-                <label for="description">Description</label>
-                <textarea #descriptionInput="ngModel" ngModel type="text" name="description" id="description" rows="8" placeholder="Description" required minlength="20"></textarea>
-            </div>
-            <ng-container *ngIf="descriptionInput.touched">
-              <div *ngIf="descriptionInput.errors?.required" class="error">
-                Description is required!
-              </div>
-              <div *ngIf="descriptionInput.errors?.minlength" class="error">
-                Descriptionshould be at least 20 characters long!
-              </div>
-            </ng-container>
-         <br>
-                <button  class="green-button">Save</button>  <!--[disabled]="form.invalid"-->
-                <button type="button" routerLink="/catalog" class="red-button">Cancel</button>
-        </form>
+  <h3>Create New Offer</h3>
+  <div *ngIf="serverError" class="error">
+    Something went wrong! Please try again later!
+  </div>
+  <div *ngIf="form.touched && form.invalid" class="error">
+    All fields are required!
+  </div>
+  <form #form="ngForm" (ngSubmit)="createNewOffer(form)">
+    <div class="createOffer">
+      <label for="offerName">Offer name</label>
+      <input #offerNameInput="ngModel" ngModel type="text" name="offerName" id="offerName" placeholder="Offer name"
+        required minlength="6">
+      <ng-container *ngIf="offerNameInput.touched">
+        <div *ngIf="offerNameInput.errors?.required" class="error">
+          Offer name is required!
+        </div>
+        <div *ngIf="offerNameInput.errors?.minlength" class="error">
+          Offer name should be at least 6 characters long!
+        </div>
+      </ng-container>
     </div>
+    <div class="createOffer">
+      <label for="country">Coutry</label>
+      <input #countryInput="ngModel" ngModel type="text" name="country" id="country" placeholder="Country" required>
+      <ng-container *ngIf="countryInput.touched">
+        <div *ngIf="countryInput.errors?.required" class="error">
+          This field is required!
+        </div>
+      </ng-container>
+    </div>
+    <div class="createOffer">
+      <label for="imageUrl">Image URL</label>
+      <input #imageUrlInput="ngModel" ngModel type="text" name="imageUrl" id="imageUrl" placeholder="image URL" required
+        pattern="^http(s?):\/\/[a-zA-Z0-9\.]{1,}[\/a-zA-Z0-9_\.\?\&\%=\-:]{1,}">
+    </div>
+    <ng-container *ngIf="imageUrlInput.touched">
+      <div *ngIf="imageUrlInput.errors?.required" class="error">
+        This field is required!
+      </div>
+      <div *ngIf="imageUrlInput.errors?.pattern" class="error">
+        Invalid URL! Please enter a valid URL!
+      </div>
+    </ng-container>
+    <div class="createOffer">
+      <label for="days">Days</label>
+      <input #daysInput="ngModel" ngModel type="number" min="1" name="days" id="days" placeholder="Days" required>
+    </div>
+    <ng-container *ngIf="daysInput.touched">
+      <div *ngIf="daysInput.errors?.required" class="error">
+        This field is required and must be number!
+      </div>
+    </ng-container>
+    <div class="createOffer">
+      <label for="transport">Transport</label>
+      <input #transportInput="ngModel" ngModel type="text" name="transport" id="transport" placeholder="Transport"
+        required>
+    </div>
+    <ng-container *ngIf="transportInput.touched">
+      <div *ngIf="transportInput.errors?.required" class="error">
+        This field is required!
+      </div>
+    </ng-container>
+    <div class="createOffer">
+      <label for="price">Price (EUR)</label>
+      <input #priceInput="ngModel" ngModel type="number" min="1" name="price" id="price" placeholder="Price in EUR"
+        required>
+    </div>
+    <ng-container *ngIf="priceInput.touched">
+      <div *ngIf="priceInput.errors?.required" class="error">
+        This field is required and must be number!
+      </div>
+    </ng-container>
+    <div class="createOffer">
+      <label for="description">Description</label>
+      <textarea #descriptionInput="ngModel" ngModel type="text" name="description" id="description" rows="8"
+        placeholder="Description" required minlength="20"></textarea>
+    </div>
+    <ng-container *ngIf="descriptionInput.touched">
+      <div *ngIf="descriptionInput.errors?.required" class="error">
+        Description is required!
+      </div>
+      <div *ngIf="descriptionInput.errors?.minlength" class="error">
+        Descriptionshould be at least 20 characters long!
+      </div>
+    </ng-container>
+    <br>
+    <button [disabled]="form.invalid" class="green-button">Save</button>
+    <!---->
+    <button type="button" routerLink="/catalog" class="red-button">Cancel</button>
+  </form>
+</div>

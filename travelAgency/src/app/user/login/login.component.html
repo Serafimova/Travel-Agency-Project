@@ -1,44 +1,44 @@
 <div class="container">
-    <form #form="ngForm" class="login" action="" method="post" (ngSubmit)="login(form)">
-       <fieldset>
-          <h2>Login Form</h2>
-          <div *ngIf="form.touched && form.invalid" class="error">
-            All fields are required!
-          </div>
-          <div *ngIf="unauthorized" class="error">
-            Wrong username or password! Please try again!
-          </div>
-          <div class="field field-icon">
-             <label for="email">Email</label>
-             <input #emailInput="ngModel" ngModel type="email" name="email" id="email"    
-                placeholder="Enter your email here" required email [value]="emailInput">
-          </div>
-          <ng-container *ngIf="emailInput.touched">
-            <div *ngIf="emailInput.errors?.required" class="error">
-              Email is required!
-            </div>
-            <div *ngIf="emailInput.errors?.email" class="error">
-              Please enter a valid email!
-            </div>
-          </ng-container>
-          <div class="field field-icon">
-             <label for="password"><span>Password</span></label>
-             <input #passwordInput="ngModel" ngModel type="password" name="password" id="password" 
-                placeholder="******" required minlength="4">
-          </div>
-          <ng-container *ngIf="passwordInput.touched">
-            <div *ngIf="passwordInput.errors?.required" class="error">
-              Password is required!
-            </div>
-            <div *ngIf="passwordInput.errors?.minlength" class="error">
-              Password must be at least 4 characters long!
-            </div>
-          </ng-container>
-          <button [disabled]="form.invalid">Login</button>
-          <p class="text-center">
-             Have an account? <br>
-             <a routerLink="/user/register">Register Here</a>
-          </p>
-       </fieldset>
-    </form>
-</div> 
+  <form #form="ngForm" class="login" action="" method="post" (ngSubmit)="login(form)">
+    <fieldset>
+      <h2>Login Form</h2>
+      <div *ngIf="form.touched && form.invalid" class="error">
+        All fields are required!
+      </div>
+      <div *ngIf="unauthorized" class="error">
+        Wrong username or password! Please try again!
+      </div>
+      <div class="field field-icon">
+        <label for="email">Email</label>
+        <input #emailInput="ngModel" ngModel type="email" name="email" id="email" placeholder="Enter your email here"
+          required email [value]="emailInput">
+      </div>
+      <ng-container *ngIf="emailInput.touched">
+        <div *ngIf="emailInput.errors?.required" class="error">
+          Email is required!
+        </div>
+        <div *ngIf="emailInput.errors?.email" class="error">
+          Please enter a valid email!
+        </div>
+      </ng-container>
+      <div class="field field-icon">
+        <label for="password"><span>Password</span></label>
+        <input #passwordInput="ngModel" ngModel type="password" name="password" id="password" placeholder="******"
+          required minlength="4">
+      </div>
+      <ng-container *ngIf="passwordInput.touched">
+        <div *ngIf="passwordInput.errors?.required" class="error">
+          Password is required!
+        </div>
+        <div *ngIf="passwordInput.errors?.minlength" class="error">
+          Password must be at least 4 characters long!
+        </div>
+      </ng-container>
+      <button [disabled]="form.invalid">Login</button>
+      <p class="text-center">
+        Have an account? <br>
+        <a routerLink="/user/register">Register Here</a>
+      </p>
+    </fieldset>
+  </form>
+</div>

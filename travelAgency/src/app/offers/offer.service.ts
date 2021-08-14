@@ -12,7 +12,7 @@ export class OfferService {
   offer: IOffer | undefined;
 
   get owner(): string {
-   return this.offer!.userId._id;
+    return this.offer!.userId._id;
   }
 
   constructor(private http: HttpClient) { }
@@ -25,7 +25,7 @@ export class OfferService {
     return this.http.get<IOffer>(`${apiURL}/offers/${id}`, { withCredentials: true });
   }
 
-  createOffer(offerData: any) {
+  createOffer(offerData: object) {
     return this.http.post<IOffer>(`${apiURL}/offers`, offerData, { withCredentials: true });
   }
 
@@ -40,6 +40,6 @@ export class OfferService {
   }
 
   bookOffer(id: string) {
-    return this.http.put<IOffer>(`${apiURL}/offers/${id}/book`, null, { withCredentials: true })
+    return this.http.put<IOffer>(`${apiURL}/offers/${id}/book`, { withCredentials: true })
   }
 }

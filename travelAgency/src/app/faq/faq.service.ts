@@ -6,12 +6,8 @@ import { UserService } from '../user/user.service';
 
 const apiURL = environment.apiUrl;
 
-
 @Injectable()
 export class FaqService {
-
- 
-
 
 faq: IQuestion | undefined;
 
@@ -24,5 +20,4 @@ faq: IQuestion | undefined;
   createQuestion(questionData: any) {
     return this.http.post<IQuestion>(`${apiURL}/faq`, questionData, { withCredentials: true });
   }
-
 }

@@ -17,7 +17,7 @@ export class AuthGuardService implements CanActivate {
     }
 
     if (typeof needAuthentication === 'boolean' && needAuthentication === this.userService.isLoggedUser) { return true };
-    
+
     return this.router.parseUrl(URLToRedirect) || '/';
   }
 }

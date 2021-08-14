@@ -1,11 +1,11 @@
 <div class="catalog">
-    <div *ngIf="hasOffers" class="noOffers">You don't have any offers. <a routerLink="/create">Create one</a></div>
-    <ng-container *ngIf="!hasOffers">
-      <div *ngFor="let singleOffer of userOffers" class="singleOffer">
-        <img src="{{singleOffer.imageUrl}}" alt="offer image" class="picture">
-        <h3>{{singleOffer.offerName}}</h3>
-        <p>{{singleOffer.description}}</p>
-        <button [routerLink]="['/catalog', singleOffer._id]">Details</button>
-      </div>
-    </ng-container>
-  </div>
+  <div *ngIf="hasOffers" class="noOffers">You don't have any offers. <a routerLink="/create">Create one</a></div>
+  <ng-container *ngIf="!hasOffers">
+    <div *ngFor="let singleOffer of userOffers" class="singleOffer">
+      <img src="{{singleOffer.imageUrl}}" alt="offer image" class="picture">
+      <h3>{{singleOffer.offerName}}</h3>
+      <p>{{singleOffer.description}}</p>
+      <button [routerLink]="['/catalog', singleOffer._id]">Details</button>
+    </div>
+  </ng-container>
+</div>

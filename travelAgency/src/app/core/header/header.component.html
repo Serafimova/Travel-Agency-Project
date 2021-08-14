@@ -17,9 +17,9 @@
           <a routerLink="/user/profile">Welcome, {{userUsername}}</a>
         </li>
         <li [ngClass]="[userRole ? 'agent':'']">{{role}}</li>
-       <li *ngIf="userRole">
-         <a routerLink="/user/myOffers">My offers</a>
-       </li>
+        <li *ngIf="userRole">
+          <a routerLink="/user/myOffers">My offers</a>
+        </li>
         <li *ngIf="!userRole">
           <a routerLink="/user/reservations">My reservations</a>
         </li>

@@ -53,16 +53,6 @@ const routes: Routes = [
           URLToRedirect: '/user/login'
         }
       },
-      // {
-      //   path: 'create',
-      //   component: CreateComponent,
-      //   canActivate: [AuthGuardService],
-      //   data: {
-      //     needAuthentication: true,
-      //     agentProfile: true,
-      //     URLToRedirect: '/user/login'
-      //   }
-      // }
     ]
   },
   {

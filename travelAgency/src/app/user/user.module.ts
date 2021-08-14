@@ -10,8 +10,6 @@ import { UserService } from './user.service';
 import { MyOffersComponent } from './my-offers/my-offers.component';
 
 
-
-
 @NgModule({
   declarations: [
     LoginComponent,

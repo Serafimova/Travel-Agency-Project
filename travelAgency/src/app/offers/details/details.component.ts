@@ -36,8 +36,6 @@ export class DetailsComponent {
   }
 
   editOffer = false;
-
-  serverError = false;
   showContacts = true;
   toggleText(): void {
     this.showContacts = !this.showContacts;

@@ -24,7 +24,7 @@ export interface IUser {
         },
         __v: number
     }[];
-    booked:  {
+    booked: {
         _id: string;
         offerName: string;
         country: string;

@@ -27,18 +27,7 @@ export class ReservationsComponent {
     return this.userService.user?.offers.length==0;
   }
 
-  get isLoggedUser(): boolean {
-    return this.userService.isLoggedUser;
-  }
-
-  get userRole(): boolean {
-    return this.userService.user?.userRole === 'Agent';
-  }
-
-  editProfile = false;
-
   constructor(private userService: UserService, private offerService: OfferService) {
     this.getUserInfo();
-    this.offers?.map(o => console.log('offername', o.offerName))
   }
 }

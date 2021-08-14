@@ -2,9 +2,6 @@
   <div class="offer">
     <img src="{{offer?.imageUrl}}" alt="offer image">
     <h3>{{offer?.offerName}}</h3>
-    <div *ngIf="serverError" class="error">
-      Something went wrong! Please try again later!
-    </div>
     <div *ngIf="unauthorized" class="error">
       You don't have the rights edit or delete!
     </div>
@@ -50,7 +47,6 @@
               You can find more on our <a routerLink="/catalog">catalog</a></p>
           </ng-container>
         </ng-container>
-        <!--  -->
       </form>
       <br>
       <h3>Need more infromation? Please, contact us</h3>
@@ -63,8 +59,6 @@
 
     <ng-container *ngIf="userRole && editOffer">
       <form #form="ngForm" (ngSubmit)="editCurrentOffer(form)">
-        <!---->
-        <!-- Errors -->
         <div class="flex">
           <p>Days</p>
           <input #daysInput="ngModel" type="number" name="days" min="1" id="days" [ngModel]="offer!.days" required>

@@ -5,8 +5,6 @@ import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 import { LocalStorage } from '../core/injectionToken';
 
-
-
 const apiURL = environment.apiUrl;
 
 @Injectable({

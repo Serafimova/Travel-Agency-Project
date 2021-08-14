@@ -29,26 +29,19 @@ export class ProfileComponent {
     return this.userService.user?.offers.length==0;
   }
 
-  get isLoggedUser(): boolean {
-    return this.userService.isLoggedUser;
-  }
-
   get userRole(): boolean {
     return this.userService.user?.userRole === 'Agent';
   }
 
-  editProfile = false;
-
   constructor(private userService: UserService, private offerService: OfferService, private router: Router) {
     this.getUserInfo();
-   // this.offers?.map(o => console.log('offername', o.offerName))
   }
-
+  
+  editProfile = false;
   serverError = false;
 
   editUserProfile(form: NgForm): void {
     if (form.invalid) { return };
-
     const { username, email } = form.value;
     this.userService.editProfile({ username, email }).subscribe({
       next: () => {

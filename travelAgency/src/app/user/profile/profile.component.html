@@ -34,11 +34,12 @@
         <ng-container *ngIf="!userRole">
           <div class="flex">
             <p>My reservations:</p>
-            <p *ngIf="hasOffers" class="noOffers">You don't have any reservations. <a routerLink="/catalog">Make one</a></p>
-            <!-- <ul *ngIf="!hasOffers">
+            <p *ngIf="hasOffers" class="noOffers">You don't have any reservations. <a routerLink="/catalog">Make one</a>
+            </p>
+            <ul *ngIf="!hasOffers">
               <li *ngFor="let singleOffer of userOffers">{{singleOffer.offerName}} <a
                   routerLink="/catalog/{{singleOffer._id}}">See more</a></li><br>
-            </ul> -->
+            </ul>
           </div>
         </ng-container>
         <button (click)="editProfile=true" class="edit-button">Edit</button>

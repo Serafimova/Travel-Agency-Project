@@ -12,6 +12,7 @@ export class CreateComponent {
 
   constructor(private router: Router, private offerService: OfferService) { }
 
+  serverError = false;
   createNewOffer(form: NgForm): void {
     if (form.invalid) { return };
     this.offerService.createOffer(form.value).subscribe({
@@ -19,9 +20,11 @@ export class CreateComponent {
         this.router.navigate(['/catalog']);
       },
       error: (err) => {
+        if (err.statusText === "Not Found") {
+          this.serverError = true;
+        }
         console.log('err', (err));
       }
     })
   }
-
 }
