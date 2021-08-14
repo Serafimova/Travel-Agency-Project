@@ -146,6 +146,12 @@ function getProfileInfo(req, res, next) {
               path : 'offerId'
             }
           })
+          .populate({
+            path : 'booked',
+            populate : {
+              path : 'offerId'
+            }
+          })
         .then(user => {
             res.status(200).json(user)
         })

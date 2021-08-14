@@ -40,6 +40,7 @@ export class OfferService {
   }
 
   bookOffer(id: string) {
-    return this.http.put<IOffer>(`${apiURL}/offers/${id}/book`, { withCredentials: true })
+    return this.http.put<IOffer>(`${apiURL}/book/${id}`, null, { withCredentials: true })
+      .pipe(tap(offer => this.offer = offer));
   }
 }

@@ -2,7 +2,7 @@ const offerModel = require("../models/offerModel");
 const userModel = require("../models/userModel");
 
 function getOffers(req, res, next) {
-    offerModel.find().populate('userId')
+    offerModel.find().populate('userId').populate('bookedBy')
         .then(offers => res.json(offers))
         .catch(next);
 };
@@ -11,7 +11,7 @@ function getOfferById(req, res, next) {
     const {
         offerId
     } = req.params;
-    offerModel.findById(offerId).populate('userId')
+    offerModel.findById(offerId).populate('userId').populate('bookedBy')
         .then(offers => res.json(offers))
         .catch(next);
 };
@@ -104,22 +104,38 @@ function editOffer(req, res, next) {
         .catch(next);
 }
 
-function bookOffer(req, res, next) {
-    const offerId = req.params.offerId;
+function bookCurrentOffer(req, res, next) {
+    const {
+        offerId
+    } = req.params;
     const {
         _id: userId
     } = req.user;
-    offerModel.findByIdAndUpdate({
-            _id: offerId
-        }, {
-            $addToSet: {
-                bookedBy: userId
-            }
-        }, {
-            new: true
-        })
+
+    Promise.all([
+            offerModel.findOneAndUpdate({
+                _id: userId
+            }, {
+                $push: {
+                    bookedBy: offerId
+                }
+            }),
+            userModel.findOneAndUpdate({
+                _id: userId
+            }, {
+                $push: {
+                    booked: offerId
+                }
+            }),
+        ])
         .then(updatedOffer => {
-            res.status(200).json(updatedOffer)
+            if (updatedOffer) {
+                res.status(200).json(updatedOffer);
+            } else {
+                res.status(401).json({
+                    message: `Not allowed!`
+                });
+            }
         })
         .catch(next);
 }
@@ -162,7 +178,7 @@ module.exports = {
     getOfferById,
     createOffer,
     editOffer,
-    bookOffer,
     getOffersByUserId,
-    deleteOffer
+    deleteOffer,
+    bookCurrentOffer
 }

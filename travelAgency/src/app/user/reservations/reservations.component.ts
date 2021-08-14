@@ -14,20 +14,20 @@ export class ReservationsComponent {
   user: IUser | undefined;
   offers: IOffer[] | undefined
 
-  getUserInfo(): void {
-    this.user = undefined;
-    this.userService.getUserProfile().pipe(tap(user => console.log(user))).subscribe(user => this.user = user);
-  }
-
   get userOffers(): any {
-    return this.user?.offers;
+    return this.user?.booked;
   }
 
   get hasOffers(): boolean{
-    return this.userService.user?.offers.length==0;
+    return this.userService.user?.booked.length==0;
   }
 
   constructor(private userService: UserService, private offerService: OfferService) {
     this.getUserInfo();
+  }
+
+  getUserInfo(): void {
+    this.user = undefined;
+    this.userService.getUserProfile().pipe(tap(user => console.log(user))).subscribe(user => this.user = user);
   }
 }
