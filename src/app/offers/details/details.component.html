@@ -28,14 +28,14 @@
           <p>Description: </p>
           <p>{{offer?.description}}</p>
         </div>
-        <!-- <ng-container *ngIf="userRole">
+        <ng-container *ngIf="userRole">
           <button (click)="editOffer=true" class="edit-button">Edit</button>
-          <button class="red-button">Delete</button>
+          <button (click)="deleteOffer()" class="red-button">Delete</button>
         </ng-container>
         <ng-container *ngIf="!userRole">
           <button class="green-button">Book</button>
          <p>You've already booked this trip!</p>
-        </ng-container> -->
+        </ng-container>
       </form>
       <br>
       <h3>Need more infromation? Please, contact us</h3>
@@ -48,7 +48,7 @@
 
 
     <ng-container *ngIf="userRole && editOffer">
-      <form #form="ngForm" > <!--(ngSubmit)="editCurrentOffer(form)"-->
+      <form #form="ngForm" (ngSubmit)="editCurrentOffer(form)"> <!---->
         <!-- Errors -->
         <div class="flex">
           <p>Days</p>

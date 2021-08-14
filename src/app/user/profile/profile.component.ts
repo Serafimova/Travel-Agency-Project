@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { tap } from 'rxjs/operators';
+import { OfferService } from 'src/app/offers/offer.service';
+import { IOffer, IUser } from 'src/app/shared/interfaces';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,8 +12,20 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent {
 
-  get user() {
-    return this.userService.user;
+  // get user() {
+  //   return this.userService.user;
+  // }
+
+  user: IUser | undefined;
+  offers: IOffer[] | undefined
+
+  getUserInfo(): void {
+    this.user = undefined;
+    this.userService.getUserProfile().pipe(tap(user => console.log(user))).subscribe(user => this.user = user);
+  }
+
+  get userOffers(): any {
+    return this.user?.offers;
   }
 
   get isLoggedUser(): boolean {
@@ -23,12 +38,17 @@ export class ProfileComponent {
 
   editProfile = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private offerService: OfferService) {
+    this.getUserInfo();
+    this.offers?.map(o => console.log('offername', o.offerName))
+  }
 
   serverError = false;
 
+
   editUserProfile(form: NgForm): void {
     if (form.invalid) { return };
+
     const { username, email } = form.value;
     this.userService.editProfile({ username, email }).subscribe({
       next: () => {

@@ -25,7 +25,7 @@ export class UserService {
     return this.user!.userRole;
   }
 
-  get userId(): string{
+  get userId(): string {
     return this.user!._id;
   }
 
@@ -53,6 +53,12 @@ export class UserService {
 
   editProfile(inputData: { username: string, email: string }) {
     const loggedUser = this.http.put<IUser>(`${apiURL}/users/profile`, inputData, { withCredentials: true })
+      .pipe(tap(user => { this.user = user; }));
+    return loggedUser;
+  }
+
+  getUserProfile() {
+    const loggedUser = this.http.get<IUser>(`${apiURL}/users/profile`, { withCredentials: true })
       .pipe(tap(user => { this.user = user; }));
     return loggedUser;
   }

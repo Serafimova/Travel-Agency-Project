@@ -20,12 +20,15 @@
           <p>{{user!.userRole}} profile</p>
         </div>
         <!-- Agent -->
-        <!-- <ng-container *ngIf="userRole">
+        <ng-container *ngIf="userRole">
           <div class="flex">
             <p>My offers:</p>
-            <p>{{user!.offers}}</p>
+            <p *ngIf="!userOffers">You don't have any offers. <a routerLink="/create">Create one</a></p>
+        <ng-container *ngFor="let singleOffer of userOffers" class="singleOffer">
+          <p>{{singleOffer.offerName}}   <a routerLink="/catalog/{{singleOffer._id}}">See more</a></p>
+        </ng-container>
           </div>
-        </ng-container> -->
+        </ng-container>
         <!-- Client -->
         <!-- <ng-container *ngIf="!userRole">
           <div class="flex">

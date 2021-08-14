@@ -24,7 +24,8 @@
           </div>
             <div class="createOffer">
                 <label for="imageUrl">Image URL</label>
-                <input #imageUrlInput="ngModel" ngModel type="text" name="imageUrl" id="imageUrl" placeholder="image URL" required pattern="^http(s?):\/\/[a-zA-Z0-9\.]{1,}[\/a-zA-Z0-9_\.-]{1,}">
+                <input #imageUrlInput="ngModel" ngModel type="text" name="imageUrl" id="imageUrl" 
+                placeholder="image URL" required pattern="^http(s?):\/\/[a-zA-Z0-9\.]{1,}[\/a-zA-Z0-9_\.\?\&\%=\-:]{1,}">
             </div>
             <ng-container *ngIf="imageUrlInput.touched">
                 <div *ngIf="imageUrlInput.errors?.required" class="error">
@@ -45,7 +46,8 @@
             </ng-container>
             <div class="createOffer">
                 <label for="transport">Transport</label>
-                <input #transportInput="ngModel" ngModel type="text" name="transport" id="transport" placeholder="Transport" required>
+                <input #transportInput="ngModel" ngModel type="text" name="transport" id="transport" 
+                placeholder="Transport" required>
             </div>
             <ng-container *ngIf="transportInput.touched">
               <div *ngIf="transportInput.errors?.required" class="error">
@@ -54,7 +56,8 @@
             </ng-container>
             <div class="createOffer">
                 <label for="price">Price (EUR)</label>
-                <input #priceInput="ngModel" ngModel type="number" min="1" name="price" id="price" placeholder="Price in EUR" required>
+                <input #priceInput="ngModel" ngModel type="number" min="1" name="price" id="price" 
+                placeholder="Price in EUR" required>
             </div>
             <ng-container *ngIf="priceInput.touched">
               <div *ngIf="priceInput.errors?.required" class="error">

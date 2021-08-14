@@ -25,9 +25,13 @@ export class OfferService {
     return this.http.post<IOffer>(`${apiURL}/offers`, offerData, { withCredentials: true });
   }
 
-  editOffer(offerData: { days: string, price:string, description: string }, id: string) {
+  editOffer(id:string, offerData:any) {
     return this.http.put<IOffer>(`${apiURL}/offers/${id}`, offerData, { withCredentials: true })
-    .pipe(tap(offer => this.offer = offer));
+    .pipe(tap(offer => this.offer = offer ));
   }
 
+  deleteOffer(id:string) {
+    return this.http.delete<IOffer>(`${apiURL}/offers/${id}`,{ withCredentials: true })
+    .pipe(tap(offer => this.offer = undefined));
+  }
 }

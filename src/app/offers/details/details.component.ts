@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { IOffer } from 'src/app/shared/interfaces';
 import { UserService } from 'src/app/user/user.service';
@@ -19,7 +19,7 @@ export class DetailsComponent {
     return this.userService.user?.userRole === 'Agent';
   }
 
-  get userId(): string{
+  get userId(): string {
     return this.userService.userId;
   }
 
@@ -31,9 +31,10 @@ export class DetailsComponent {
     this.showContacts = !this.showContacts;
   };
 
-  constructor(private userService: UserService, private offerService: OfferService, private activatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService, private offerService: OfferService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
     this.getSingleOffer();
-    //this.editCurrentOffer();
   }
 
   getSingleOffer(): void {
@@ -42,25 +43,29 @@ export class DetailsComponent {
     this.offerService.getOfferById(id).pipe(tap(offer => console.log(offer))).subscribe(offer => this.offer = offer);
   }
 
+  editCurrentOffer(form: NgForm): void {
+    if (form.invalid) { return };
+    const { days, price, description } = form.value;
+    const id = this.activatedRoute.snapshot.params.offerId;
+    this.offerService.editOffer(id, { days, price, description }).subscribe({
+      next: () => {
+        this.editOffer = false;
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate([`/catalog/${id}`]);
+        });
+      },
+      error: (err) => {
+        console.log(err)
 
-
-  // editCurrentOffer(form: NgForm): void {
-  //   if (form.invalid) { return };
-
-  //   const { days, price, description } = form.value;
-  //   this.offerService.editOffer({ days, price, description }, this.userId).subscribe({
-  //     next: () => {
-  //      this.editOffer = false;
-  //     },
-  //     error: (err) => {
-  //       console.log(err)
-
-  //     }
-  //   })
-  // }
-
-
-
-
+      }
+    })
+  }
+  
+  deleteOffer(): void {
+    const id = this.activatedRoute.snapshot.params.offerId;
+    this.offerService.deleteOffer(id).subscribe(() => {
+      this.router.navigate(['/catalog']);
+    })
+  }
 
 }

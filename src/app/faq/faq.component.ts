@@ -25,7 +25,6 @@ export class FaqComponent {
     this.getQuestions();
   }
  
-
   getQuestions(): void {
     this.questions = undefined;
     this.faqService.getAllQuestions().pipe(tap(questions => console.log(questions))).subscribe(questions => this.questions = questions)
