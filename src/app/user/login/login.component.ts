@@ -13,7 +13,7 @@ export class LoginComponent {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  wrong = false;
+  unauthorized = false;
   login(form: NgForm): void {
     if (form.invalid) { return };
     const { email, password } = form.value;
@@ -23,7 +23,7 @@ export class LoginComponent {
       },
       error: (err) => {
         if (err.statusText === "Unauthorized") {
-          this.wrong = true;
+          this.unauthorized = true;
         }
       }
     })

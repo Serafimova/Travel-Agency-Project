@@ -32,6 +32,9 @@
         <div *ngIf="emailInput.errors?.email" class="error">
           Please enter a valid email!
         </div>
+        <div *ngIf="isTaken" class="error">
+          This email is already registered! Please enter anothe one!
+        </div>
       </ng-container>
       <div class="field field-icon">
         <label for="password">Password</label>

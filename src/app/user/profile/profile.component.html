@@ -17,16 +17,17 @@
         </div>
         <div class="flex">
           <p>Profile: </p>
-          <p>{{user!.userRole}} profile</p>
+          <p>{{user?.userRole}} profile</p>
         </div>
         <!-- Agent -->
         <ng-container *ngIf="userRole">
           <div class="flex">
             <p>My offers:</p>
-            <p *ngIf="!userOffers">You don't have any offers. <a routerLink="/create">Create one</a></p>
-        <ng-container *ngFor="let singleOffer of userOffers" class="singleOffer">
-          <p>{{singleOffer.offerName}}   <a routerLink="/catalog/{{singleOffer._id}}">See more</a></p>
-        </ng-container>
+            <p *ngIf="hasOffers" class="noOffers">You don't have any offers. <a routerLink="/create">Create one</a></p>
+            <ul *ngIf="!hasOffers">
+              <li *ngFor="let singleOffer of userOffers">{{singleOffer.offerName}} <a
+                  routerLink="/catalog/{{singleOffer._id}}">See more</a></li><br>
+            </ul>
           </div>
         </ng-container>
         <!-- Client -->
@@ -44,7 +45,8 @@
       <form #form="ngForm" (ngSubmit)="editUserProfile(form)">
         <div class="flex">
           <p>Username: </p>
-          <input #usernameInput="ngModel" type="text" name="username" id="username" minlength="4" [ngModel]="user!.username">
+          <input #usernameInput="ngModel" type="text" name="username" id="username" minlength="4"
+            [ngModel]="user!.username">
         </div>
         <div *ngIf="usernameInput.errors?.minlength" class="error">
           Username must be at least 4 characters long!

@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isTaken = false;
   register(form: NgForm): void {
     if (form.invalid) { return };
     const { userRole, username, email, password } = form.value;
@@ -25,9 +26,11 @@ export class RegisterComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-        //this error to handle
         if (err.statusText === "Not Found") {
           this.router.navigate(['**']);
+        }
+        if (err.statusText === "Conflict") {
+          this.isTaken = true;
         }
       }
     })

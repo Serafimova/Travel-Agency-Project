@@ -35,7 +35,7 @@
   margin: .5em;
 }
 
-.flex p:last-child {
+.flex p:last-child{
   width: 55%;
   text-align: left;
   margin: .5em;
@@ -84,5 +84,16 @@ input {
 .error {
   text-align: center;
   color: red;
+  font-weight: bold;
+}
+
+ul{
+ text-align: left;
+}
+
+.noOffers{
+  width: 55%;
+  text-align: left;
+  margin: .5em;
   font-weight: bold;
 }

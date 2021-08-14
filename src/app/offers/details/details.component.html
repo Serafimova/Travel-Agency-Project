@@ -5,7 +5,9 @@
     <div *ngIf="serverError" class="error">
       Something went wrong! Please try again later!
     </div>
-    
+    <div *ngIf="unauthorized" class="error">
+      You don't have the rights edit or delete!
+    </div>
     <ng-container *ngIf="!editOffer">
       <form>
         <div class="flex">
@@ -28,10 +30,18 @@
           <p>Description: </p>
           <p>{{offer?.description}}</p>
         </div>
+        <div class="flex">
+          <p>Created by: </p>
+          <p>{{offer?.userId?.username}}</p>
+        </div>
+        <!-- Agent -->
         <ng-container *ngIf="userRole">
+          <!-- <ng-container *ngIf="isOwner"> -->
           <button (click)="editOffer=true" class="edit-button">Edit</button>
           <button (click)="deleteOffer()" class="red-button">Delete</button>
+          <!-- </ng-container> -->
         </ng-container>
+        <!-- Client -->
         <ng-container *ngIf="!userRole">
           <button class="green-button">Book</button>
          <p>You've already booked this trip!</p>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { OfferService } from 'src/app/offers/offer.service';
 import { IOffer, IUser } from 'src/app/shared/interfaces';
@@ -11,10 +12,6 @@ import { UserService } from '../user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-
-  // get user() {
-  //   return this.userService.user;
-  // }
 
   user: IUser | undefined;
   offers: IOffer[] | undefined
@@ -28,6 +25,10 @@ export class ProfileComponent {
     return this.user?.offers;
   }
 
+  get hasOffers(): boolean{
+    return this.userService.user?.offers.length==0;
+  }
+
   get isLoggedUser(): boolean {
     return this.userService.isLoggedUser;
   }
@@ -38,13 +39,12 @@ export class ProfileComponent {
 
   editProfile = false;
 
-  constructor(private userService: UserService, private offerService: OfferService) {
+  constructor(private userService: UserService, private offerService: OfferService, private router: Router) {
     this.getUserInfo();
-    this.offers?.map(o => console.log('offername', o.offerName))
+   // this.offers?.map(o => console.log('offername', o.offerName))
   }
 
   serverError = false;
-
 
   editUserProfile(form: NgForm): void {
     if (form.invalid) { return };
@@ -53,6 +53,9 @@ export class ProfileComponent {
     this.userService.editProfile({ username, email }).subscribe({
       next: () => {
         this.editProfile = false;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate(['/user/profile']);
+      });
       },
       error: (err) => {
         console.log(err)

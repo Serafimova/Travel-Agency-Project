@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { IOffer } from 'src/app/shared/interfaces';
+import { IOffer, IUser } from 'src/app/shared/interfaces';
 import { UserService } from 'src/app/user/user.service';
 import { OfferService } from '../offer.service';
 
@@ -14,14 +14,15 @@ import { OfferService } from '../offer.service';
 export class DetailsComponent {
 
   offer: IOffer | undefined;
+  user: IUser | undefined;
 
   get userRole(): boolean {
     return this.userService.user?.userRole === 'Agent';
   }
 
-  get userId(): string {
-    return this.userService.userId;
-  }
+  // get userId(): string {
+  //   return this.userService.userId;
+  // }
 
   editOffer = false;
 
@@ -35,7 +36,10 @@ export class DetailsComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     this.getSingleOffer();
+
   }
+
+
 
   getSingleOffer(): void {
     this.offer = undefined;
@@ -43,6 +47,8 @@ export class DetailsComponent {
     this.offerService.getOfferById(id).pipe(tap(offer => console.log(offer))).subscribe(offer => this.offer = offer);
   }
 
+
+  unauthorized = false;
   editCurrentOffer(form: NgForm): void {
     if (form.invalid) { return };
     const { days, price, description } = form.value;
@@ -55,16 +61,26 @@ export class DetailsComponent {
         });
       },
       error: (err) => {
-        console.log(err)
-
+        if (err.statusText === "Unauthorized") {
+          this.unauthorized = true;
+          this.editOffer = false;
+          this.router.navigate([`/catalog/${id}`]);
+        }
       }
     })
   }
-  
+
   deleteOffer(): void {
     const id = this.activatedRoute.snapshot.params.offerId;
-    this.offerService.deleteOffer(id).subscribe(() => {
-      this.router.navigate(['/catalog']);
+    this.offerService.deleteOffer(id).subscribe({
+      next: () => {
+        this.router.navigate(['/catalog'])
+      },
+      error: (err) => {
+        if (err.statusText === "Unauthorized") {
+          this.unauthorized = true;
+        }
+      }
     })
   }
 
