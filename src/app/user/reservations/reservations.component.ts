@@ -1,15 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { OfferService } from 'src/app/offers/offer.service';
+import { IOffer, IUser } from 'src/app/shared/interfaces';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-reservations',
   templateUrl: './reservations.component.html',
   styleUrls: ['./reservations.component.scss']
 })
-export class ReservationsComponent implements OnInit {
+export class ReservationsComponent {
 
-  constructor() { }
+  user: IUser | undefined;
+  offers: IOffer[] | undefined
 
-  ngOnInit(): void {
+  getUserInfo(): void {
+    this.user = undefined;
+    this.userService.getUserProfile().pipe(tap(user => console.log(user))).subscribe(user => this.user = user);
   }
 
+  get userOffers(): any {
+    return this.user?.offers;
+  }
+
+  get hasOffers(): boolean{
+    return this.userService.user?.offers.length==0;
+  }
+
+  get isLoggedUser(): boolean {
+    return this.userService.isLoggedUser;
+  }
+
+  get userRole(): boolean {
+    return this.userService.user?.userRole === 'Agent';
+  }
+
+  editProfile = false;
+
+  constructor(private userService: UserService, private offerService: OfferService) {
+    this.getUserInfo();
+    this.offers?.map(o => console.log('offername', o.offerName))
+  }
 }

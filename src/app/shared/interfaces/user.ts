@@ -43,5 +43,5 @@ export interface IUser {
             __v: number
         },
         __v: number
-    }
+    }[];
 }

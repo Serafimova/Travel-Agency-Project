@@ -36,16 +36,21 @@
         </div>
         <!-- Agent -->
         <ng-container *ngIf="userRole">
-          <!-- <ng-container *ngIf="isOwner"> -->
-          <button (click)="editOffer=true" class="edit-button">Edit</button>
-          <button (click)="deleteOffer()" class="red-button">Delete</button>
-          <!-- </ng-container> -->
+          <ng-container *ngIf="isOwner">
+            <button (click)="editOffer=true" class="edit-button">Edit</button>
+            <button (click)="deleteOffer()" class="red-button">Delete</button>
+          </ng-container>
         </ng-container>
         <!-- Client -->
         <ng-container *ngIf="!userRole">
-          <button class="green-button">Book</button>
-         <p>You've already booked this trip!</p>
+          <button *ngIf="!isBooked" (click)="bookOffer()" class="green-button">Book</button>
+          <ng-container *ngIf="isBooked">
+            <p class="booked">You've already booked this trip!</p>
+            <p>Want to book another one? <br>
+              You can find more on our <a routerLink="/catalog">catalog</a></p>
+          </ng-container>
         </ng-container>
+        <!--  -->
       </form>
       <br>
       <h3>Need more infromation? Please, contact us</h3>
@@ -56,9 +61,9 @@
       </div>
     </ng-container>
 
-
     <ng-container *ngIf="userRole && editOffer">
-      <form #form="ngForm" (ngSubmit)="editCurrentOffer(form)"> <!---->
+      <form #form="ngForm" (ngSubmit)="editCurrentOffer(form)">
+        <!---->
         <!-- Errors -->
         <div class="flex">
           <p>Days</p>
@@ -76,7 +81,8 @@
         </div>
         <div class="flex">
           <p>Description</p>
-          <textarea #descriptionInput="ngModel" type="text" name="description" id="description" rows="8" [ngModel]="offer!.description" required minlength="20"></textarea>
+          <textarea #descriptionInput="ngModel" type="text" name="description" id="description" rows="8"
+            [ngModel]="offer!.description" required minlength="20"></textarea>
         </div>
         <div *ngIf="descriptionInput.errors?.required" class="error">
           Description is required!
@@ -89,8 +95,5 @@
         <button type="button" (click)="editOffer=false" class="red-button">Cancel</button>
       </form>
     </ng-container>
-
-
-
   </div>
 </div>

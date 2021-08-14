@@ -20,9 +20,20 @@ export class DetailsComponent {
     return this.userService.user?.userRole === 'Agent';
   }
 
-  // get userId(): string {
-  //   return this.userService.userId;
-  // }
+  get isOwner(): boolean {
+    return this.userService.userId == this.offer?.userId?._id;
+  }
+
+  constructor(private userService: UserService, private offerService: OfferService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
+    this.getSingleOffer();
+  }
+  getSingleOffer(): void {
+    this.offer = undefined;
+    const id = this.activatedRoute.snapshot.params.offerId;
+    this.offerService.getOfferById(id).pipe(tap(offer => console.log(offer))).subscribe(offer => this.offer = offer);
+  }
 
   editOffer = false;
 
@@ -31,22 +42,6 @@ export class DetailsComponent {
   toggleText(): void {
     this.showContacts = !this.showContacts;
   };
-
-  constructor(private userService: UserService, private offerService: OfferService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router) {
-    this.getSingleOffer();
-
-  }
-
-
-
-  getSingleOffer(): void {
-    this.offer = undefined;
-    const id = this.activatedRoute.snapshot.params.offerId;
-    this.offerService.getOfferById(id).pipe(tap(offer => console.log(offer))).subscribe(offer => this.offer = offer);
-  }
-
 
   unauthorized = false;
   editCurrentOffer(form: NgForm): void {
@@ -70,6 +65,31 @@ export class DetailsComponent {
     })
   }
 
+  isBooked = false;
+  bookOffer(): void {
+    const id = this.activatedRoute.snapshot.params.offerId;
+  const userId = this.userService.user;
+  console.log(userId)
+  //this.offer?.bookedBy.push(userId);
+    this.offerService.bookOffer(id).subscribe({
+      next: () => {
+        this.isBooked = true;
+        console.log('yey')
+
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate([`/catalog/${id}`]);
+        });
+      },
+      error: (err) => {
+        if (err.statusText === "Unauthorized") {
+          this.isBooked = false;
+          console.log('ney')
+          this.router.navigate([`/catalog/${id}`]);
+        }
+      }
+    })
+  }
+
   deleteOffer(): void {
     const id = this.activatedRoute.snapshot.params.offerId;
     this.offerService.deleteOffer(id).subscribe({
@@ -83,5 +103,4 @@ export class DetailsComponent {
       }
     })
   }
-
 }

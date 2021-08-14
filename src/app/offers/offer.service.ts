@@ -11,6 +11,10 @@ export class OfferService {
 
   offer: IOffer | undefined;
 
+  get owner(): string {
+   return this.offer!.userId._id;
+  }
+
   constructor(private http: HttpClient) { }
 
   getAllOffers() {
@@ -25,13 +29,17 @@ export class OfferService {
     return this.http.post<IOffer>(`${apiURL}/offers`, offerData, { withCredentials: true });
   }
 
-  editOffer(id:string, offerData:any) {
+  editOffer(id: string, offerData: any) {
     return this.http.put<IOffer>(`${apiURL}/offers/${id}`, offerData, { withCredentials: true })
-    .pipe(tap(offer => this.offer = offer ));
+      .pipe(tap(offer => this.offer = offer));
   }
 
-  deleteOffer(id:string) {
-    return this.http.delete<IOffer>(`${apiURL}/offers/${id}`,{ withCredentials: true })
-    .pipe(tap(offer => this.offer = undefined));
+  deleteOffer(id: string) {
+    return this.http.delete<IOffer>(`${apiURL}/offers/${id}`, { withCredentials: true })
+      .pipe(tap(offer => this.offer = undefined));
+  }
+
+  bookOffer(id: string) {
+    return this.http.put<IOffer>(`${apiURL}/offers/${id}/book`, null, { withCredentials: true })
   }
 }

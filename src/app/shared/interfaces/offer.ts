@@ -16,5 +16,14 @@ export interface IOffer {
         offers: string[];
         __v: number
     },
+    bookedBy: {
+        _id: string;
+        userRole: string;
+        username: string;
+        email: string;
+        password: string;
+        offers: string[];
+        __v: number
+    }[],
     __v: number
 }
